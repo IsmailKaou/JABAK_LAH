@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -13,13 +13,26 @@ export class LoginFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
-      login: '',
-      password: '',
+      login: [
+        '',
+        [
+          this.inputType === 'email'
+            ? Validators.email
+            : Validators.pattern(
+                '^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$'
+              ),
+          Validators.required,
+        ],
+      ],
+      password: ['', [Validators.required]],
     });
   }
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Login', form.value.login);
-    console.log('Password', form.value.password);
+    if (this.loginForm.invalid) {
+      console.log('invalid');
+    } else {
+      console.log('Login', form.value.login);
+      console.log('Password', form.value.password);
+    }
   }
 }
