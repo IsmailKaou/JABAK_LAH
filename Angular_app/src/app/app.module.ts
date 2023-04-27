@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './_components/login-form/login-form.component';
 import { ClientComponent } from './client/client/client.component';
 import { AgentComponent } from './agent/agent/agent.component';
+import { AgentHomeComponent } from './home/agent-home/agent-home.component';
+import { ClientHomeComponent } from './home/client-home/client-home.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { AgentComponent } from './agent/agent/agent.component';
     LoginFormComponent,
     ClientComponent,
     AgentComponent,
+    AgentHomeComponent,
+    ClientHomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

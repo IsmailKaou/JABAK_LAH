@@ -16,11 +16,15 @@ module.exports = {
       'silver': '#ecebff',
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
-      'cream': '#FBF7F2',
+      'cream': '#fbf7f2',
       'shiny-green': '#52E782',
       'gray': '#C7C6C2'
     },
+    fontFamily: {
+      'popins': ['Poppins']
+    }
   },
+
 
   plugins: [],
 }
