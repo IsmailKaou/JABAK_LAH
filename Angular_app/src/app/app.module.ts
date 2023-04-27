@@ -10,6 +10,8 @@ import { ClientComponent } from './client/client/client.component';
 import { AgentComponent } from './agent/agent/agent.component';
 import { AgentHomeComponent } from './home/agent-home/agent-home.component';
 import { ClientHomeComponent } from './home/client-home/client-home.component';
+import { ContactUsAboutUsHomeComponent } from './home/contact-us-about-us-home/contact-us-about-us-home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,14 @@ import { ClientHomeComponent } from './home/client-home/client-home.component';
     AgentComponent,
     AgentHomeComponent,
     ClientHomeComponent,
+    ContactUsAboutUsHomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
