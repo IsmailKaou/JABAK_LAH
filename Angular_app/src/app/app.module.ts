@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { PaymentsComponent } from './client/creditors/payments/payments.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './home/email.service';
+import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EmailService } from './home/email.service';
     ContactUsAboutUsHomeComponent,
     CreditorsComponent,
     PaymentsComponent,
+    HeroSectionComponent,
   ],
   imports: [
     BrowserModule,
