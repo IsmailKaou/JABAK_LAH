@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="h-screen font-popins">
+    <div class="absolute w-[200px] top-0 md:top-8 md:left-10">
+      <img src="../../../assets/Home/logo-01.png" alt="" />
+    </div>
+    <div class="">
+      <mat-tab-group mat-align-tab="start" class="flex translate-y-48">
+        <div class="rounded">
+          <div>Hello</div>
+          <mat-tab label="List of Creditors" class="text-gray-700">
+            <select [(ngModel)]="category" bg-purple>
+              <!--The value attribute is set to the id property of each category,
+                which will be bound to the selectedCategory property
+                of the component when an option is selected.-->
+              <option *ngFor="let cat of categories" [value]="cat.id">
+                {{ cat.name }}
+              </option>
+            </select>
+          </mat-tab>
+        </div>
+        <mat-tab label="History">
+          <app-payments> </app-payments>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </body>
+</html>
