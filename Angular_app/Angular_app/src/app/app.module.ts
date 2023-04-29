@@ -14,10 +14,7 @@ import { ContactUsAboutUsHomeComponent } from './home/contact-us-about-us-home/c
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { AgentInputComponent } from './agent-profile/agent-input/agent-input.component';
-import { ClientProfileComponent } from './client-profile/client-profile.component';
-import { ClientInputComponent } from './client-profile/client-input/client-input.component';
 import {HttpClientModule} from '@angular/common/http';
-
 
 
 @NgModule({
@@ -32,10 +29,6 @@ import {HttpClientModule} from '@angular/common/http';
     ContactUsAboutUsHomeComponent,
     AgentProfileComponent,
     AgentInputComponent,
-    ClientProfileComponent,
-    ClientInputComponent
-    
-
   ],
   imports: [
     BrowserModule,
