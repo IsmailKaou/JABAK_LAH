@@ -11,6 +11,22 @@ import { AgentHomeComponent } from './home/agent-home/agent-home.component';
 import { ClientHomeComponent } from './home/client-home/client-home.component';
 import { ContactUsAboutUsHomeComponent } from './home/contact-us-about-us-home/contact-us-about-us-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { AgentInputComponent } from './agent-profile/agent-input/agent-input.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { ClientInputComponent } from './client-profile/client-input/client-input.component';
+
+
+
+import { MatTabsModule } from '@angular/material/tabs';
+import { CreditorsComponent } from './client/creditors/creditors.component';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { PaymentsComponent } from './client/creditors/payments/payments.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EmailService } from './home/email.service';
+import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +38,27 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AgentHomeComponent,
     ClientHomeComponent,
     ContactUsAboutUsHomeComponent,
+    AgentProfileComponent,
+    AgentInputComponent,
+    ClientProfileComponent,
+    ClientInputComponent,
+    CreditorsComponent,
+    PaymentsComponent,
+    HeroSectionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    HttpClientModule,
+    MatTabsModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [EmailService],
   bootstrap: [AppComponent],
