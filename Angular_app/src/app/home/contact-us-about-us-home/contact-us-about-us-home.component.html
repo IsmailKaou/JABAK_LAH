@@ -40,7 +40,7 @@
         </div>
 
         <div
-          class="w-full max-w-sm p-4 bg-white rounded-lg shadow-2xl sm:p-6 md:p-8"
+          class="w-[300px] md:w-full max-w-sm p-4 bg-white rounded-lg shadow-2xl sm:p-6 md:p-8"
         >
           <h1 class="text-gray-900 text-center mt-5 mb-3 font-bold text-3xl">
             Contact Us
@@ -49,25 +49,23 @@
             Hey , Enter your details to Contact us for Something
           </p>
           <form
-            [formGroup]="FormData"
+            [formGroup]="contactForm"
             class="space-y-6"
-            name="form"
-            #form="ngForm"
-            (ngSubmit)="onSubmit(FormData.value)"
+            (ngSubmit)="onSubmit(contactForm.value)"
           >
             <div>
               <input
                 class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
                 placeholder="Enter your Name"
                 type="text"
-                [(ngModel)]="name"
-                #nameInput="ngModel"
-                required
                 name="name"
+                formControlName="name"
               />
               <div
                 class="help is-error text-xs text-red p-2"
-                *ngIf="nameInput.invalid && nameInput.touched"
+                *ngIf="
+                  contactForm.controls['name']?.errors?.['required'] && contactForm.get('name')?.touched
+                "
               >
                 Your Name is required
               </div>
@@ -76,17 +74,24 @@
               <input
                 class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
                 placeholder="Enter your Email"
-                email
-                [(ngModel)]="email"
-                #emailInput="ngModel"
-                required
                 name="email"
+                formControlName="email"
               />
               <div
                 class="help is-error text-xs text-red p-2"
-                *ngIf="emailInput.invalid && emailInput.touched"
+                *ngIf="
+                  contactForm.controls['email']?.errors?.['required'] && contactForm.get('email')?.touched
+                "
               >
-                Please Type a valid Email Address
+                Your email is required
+              </div>
+              <div
+                class="help is-error text-xs text-red p-2"
+                *ngIf="
+                  contactForm.controls['email']?.errors?.['email'] && contactForm.get('email')?.touched
+                "
+              >
+                Please enter a valid email address
               </div>
             </div>
 
@@ -96,11 +101,21 @@
                 placeholder="Type your Message, Question, Feedback etc..."
                 type="text"
                 rows="5"
+                formControlName="body"
               ></textarea>
+              <div
+                class="help is-error text-xs text-red p-2"
+                *ngIf="
+                  contactForm.controls['body']?.errors?.['required'] && contactForm.get('body')?.touched
+                "
+              >
+                Please type a message to send!
+              </div>
             </div>
 
             <div class="mb-5">
               <button
+                [disabled]="!contactForm.valid"
                 type="submit"
                 class="w-full mt-4 text-[#0E0E10] disabled:bg-[#bdffd2] bg-[#52E782] hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
@@ -109,6 +124,7 @@
             </div>
           </form>
         </div>
+        <div class="bg-transparent text-transparent md:hidden">..</div>
       </div>
     </section>
   </body>

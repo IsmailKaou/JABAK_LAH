@@ -16,15 +16,26 @@ import { EmailService } from '../email.service';
 export class ContactUsAboutUsHomeComponent implements OnInit {
   faCoffee = faCoffee;
 
-  name: string;
-  email: string;
+  // name: string;
+  // email: string;
+  // body: string;
 
-  FormData: FormGroup;
+  contactForm: FormGroup;
 
   constructor(private builder: FormBuilder, private contact: EmailService) {}
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.contactForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      body: new FormControl(null, Validators.required),
+    });
+  }
 
   onSubmit(FormData: any) {
+    this.contactForm.value.name = null;
+    this.contactForm.value.email = null;
+    this.contactForm.value.body = null;
     this.contact.sendEmail(FormData).subscribe(
       (response) => {
         location.href = 'https://mailthis.to/confirm';
