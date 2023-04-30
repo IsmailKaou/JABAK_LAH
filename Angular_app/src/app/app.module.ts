@@ -27,6 +27,7 @@ import { PaymentsComponent } from './client/creditors/payments/payments.componen
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './home/email.service';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
+import { NavbarComponent } from './home/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { HeroSectionComponent } from './home/hero-section/hero-section.component
     CreditorsComponent,
     PaymentsComponent,
     HeroSectionComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

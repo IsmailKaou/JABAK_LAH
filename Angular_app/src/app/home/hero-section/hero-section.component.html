@@ -1,91 +1,4 @@
-<div class="container px-5 md:px-20 py-7 min-h-screen font-popins">
-  <nav class="md:flex items-center justify-between mb-5">
-    <div class="flex justify-between">
-      <img
-        src="../../../assets/Home/logo-01.png"
-        class="w-45 h-16 cursor-pointer"
-        alt="JabkLah Logo"
-      />
-
-      <div class="md:hidden flex items-center">
-        <button class="outline-none menu-button" (click)="toggleNavbar()">
-          <svg
-            *ngIf="!isNavbarVisible"
-            class="block h-8 w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M7 6h16M7 12h16M7 18h16"
-            ></path>
-          </svg>
-
-          <!-- Icon when menu is open. -->
-          <svg
-            *ngIf="isNavbarVisible"
-            class="block h-8 w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <ul
-      id="navbar"
-      class="hidden md:inline-block drop-shadow-2xl md:static absolute z-[1] text-center md:text-start md:z-auto left-0 right-0 top-24"
-    >
-      <li
-        class="list-none md:inline-block bg-[#F5EBDF] md:bg-transparent md:border-0 md:py-0 py-3 px-12 border-gray border-b border-t"
-      >
-        <a
-          class="no-underline font-bold hover:text-[#52E782] duration-300"
-          href="#"
-          >Home</a
-        >
-      </li>
-      <li
-        class="list-none md:inline-block bg-[#F5EBDF] md:bg-transparent md:border-0 md:py-0 py-3 px-12 border-gray border-b"
-      >
-        <a
-          class="no-underline font-bold hover:text-[#52E782] duration-300"
-          href="#agent"
-          >Agent</a
-        >
-      </li>
-      <li
-        class="list-none md:inline-block bg-[#F5EBDF] md:bg-transparent md:border-0 md:py-0 py-3 px-12 border-gray border-b"
-      >
-        <a
-          class="no-underline font-bold hover:text-[#52E782] duration-300"
-          href="#client"
-          >Client</a
-        >
-      </li>
-      <li
-        class="list-none md:inline-block bg-[#F5EBDF] md:bg-transparent md:border-0 md:py-0 py-3 px-12 border-gray border-b rounded-b-2xl"
-      >
-        <a
-          class="no-underline font-bold hover:text-[#52E782] duration-300"
-          href="#contact"
-          >About Us</a
-        >
-      </li>
-    </ul>
-  </nav>
-
+<div class="px-5 md:px-20 md:ml-10">
   <div class="md:flex flex-row justify-between">
     <div class="max-w-2xl text-center md:text-start">
       <h1 class="font-bold text-5xl mt-16">
@@ -97,11 +10,12 @@
       </p>
 
       <div class="my-12">
-        <a
-          href="#"
+        <button
+          (click)="toContact()"
           class="bg-[#52E782] rounded-3xl py-3 px-8 font-semibold hover:bg-transparent hover:border-[#52E782] hover:border duration-300 border border-transparent"
-          >Contact Us</a
         >
+          Contact Us
+        </button>
       </div>
     </div>
 

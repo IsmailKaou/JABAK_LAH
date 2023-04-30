@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: ["./src/**/*.{html,ts}",],
   theme: {
@@ -18,6 +20,7 @@ module.exports = {
       cream: "#fbf7f2",
       "shiny-green": "#52E782",
       gray: "#C7C6C2",
+      ...colors,
     },
     fontFamily: {
       poppins: ["Poppins"],

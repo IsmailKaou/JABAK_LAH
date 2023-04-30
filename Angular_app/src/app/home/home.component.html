@@ -6,10 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body class="scroll-smooth">
-    <app-hero-section></app-hero-section>
+  <body>
+    <div class="container py-7 min-h-screen font-popins z-50" id="home">
+      <app-navbar></app-navbar>
+      <app-hero-section></app-hero-section>
+    </div>
     <app-agent-home></app-agent-home>
     <app-client-home></app-client-home>
     <app-contact-us-about-us-home></app-contact-us-about-us-home>
+    <button
+      *ngIf="isScrolled"
+      (click)="scrollToTop()"
+      class="flex fixed bottom-5 transition-all duration-300 right-5 w-10 h-10 bg-shiny-green hover:bg-slate-800 hover:text-white rounded-full"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 m-auto"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"
+        />
+      </svg>
+    </button>
   </body>
 </html>
