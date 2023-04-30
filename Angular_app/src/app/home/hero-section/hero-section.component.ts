@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class HeroSectionComponent {
 
   isNavbarVisible= false;
-  
+
   toggleNavbar() {
     let navbar:any;
     navbar = document.getElementById('navbar');
     navbar.classList.toggle('hidden');
     this.isNavbarVisible=!this.isNavbarVisible;
-}
+  }
 }
