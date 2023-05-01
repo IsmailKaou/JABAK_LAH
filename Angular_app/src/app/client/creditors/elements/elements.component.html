@@ -1,125 +1,65 @@
+<div class="flex items-center justify-center font-poppins">
+  <div
+    class="z-0 h-screen translate-y-3 bg-white rounded-[30px] shadow-md w-[90%]"
+  >
+    <select
+      [(ngModel)]="selectedCategory"
+      class="w-1/2 h-10 translate-x-64 translate-y-8 outline-none box-border bg-cream rounded flex-1 px-3 py-2 cursor-pointer font-sans"
+    >
+      <option value="">All Categories</option>
+      <option value="recharges">RECHARGES</option>
+      <option value="factures">Factures</option>
+    </select>
 
-<div class="relative">
-<div class=" absolute left-10 right-5 w-11/12 z-0  h-screen translate-y-3 bg-white  rounded-[30px] shadow-md">
-
-    <select  [(ngModel)]="selectedCategory" class=" w-1/2 translate-x-64 translate-y-8 outline-none box-border bg-cream rounded flex-1 px-3 py-2 cursor-pointer  font-sans" >
-        <option selected disabled >All Categories</option>
-        <option value="RECHARGES">RECHARGES</option>
-        <option value="html">Factures</option>
-    
-      </select>
-
-
-
-  <div class="relative translate-y-10">
-
-    <div class="static  ">
-     <div  id="5">   
-        <div class="border shadow-xl  border-gray-300 w-5/12 h-44 absolute  top-5 bottom-10 left-6 right-0 bg-white">
-
-            <div class="absolute  top-10 bottom-5 left-5 right-8">
-                <img src="../../../assets/Home/maroct.png" alt="" >
-            </div>
-            <div class="border-l-2   border-gray-300 absolute  top-5 bottom-10 inset-x-1/3 h-36"></div>
-            
-            <div class="text-center py-4 text-lg text-gray-600">
-                <p>IAM RECHARGES</p>
-            </div>
-
-            <div class="absolute  top-14 bottom-10 left-52 right-5 font-bold text-sm">              
-                <a mat-raised-button href="https://www.google.com/" target="_blank">TELEPHONIE ET INTERNET SIM</a>
-
-                <!--<button mat-raised-button class="block">TELEPHONIE ET INTERNET SIM</button>-->
-                
-            </div>
-
+    <div
+      class="translate-y-14 flex flex-row items-center justify-center gap-5 flex-wrap"
+    >
+      <div
+        class="border shadow-xl border-gray-300 w-[40%] h-[250px] bg-white flex flex-row items-center justify-evenly space-x-1"
+        *ngFor="let cre of creditors | FilterByCategorie : selectedCategory"
+      >
+        <div class="">
+          <img src="{{ cre.logo }}" alt="" width="150px" height="150px" />
         </div>
 
-    </div>  
+        <div class="flex flex-col items-start justify-center w-[50%]">
+          <div class="py-4 text-lg text-gray-600">
+            <p>{{ cre.name }}</p>
+          </div>
 
-    </div>
+          <div class="font-semibold text-sm flex flex-col gap-2">
+            <div
+              *ngFor="let type of cre.types"
+              class="flex flex-row items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-3 h-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
 
-    <div class="static">
-        
-        <div class="border shadow-xl   border-gray-300 w-5/12  h-44 absolute  top-5 bottom-10 left-15 right-10 bg-white">
-            
-            <div class="absolute  top-10 bottom-5 left-5 right-8">
-                <img src="../../../assets/Home/maroct.png" alt="" >
-            </div>
-            <div class="border-l-2  border-gray-300 absolute  top-5 bottom-10 inset-x-1/3 h-36">
-
-            </div>
-            <div class="text-center py-4 text-lg text-gray-600">
-                <p>IAM FACTURES   {{selectedCategory}}  
-                </p>
-            </div>
-            <div class=" absolute  top-12 bottom-10 left-52 right-5 font-bold text-sm ">   
-                <a  mat-raised-button href="https://www.google.com/" target="_blank" >PRODUIT INTERNET SIM</a>
-                <a mat-raised-button href="https://www.google.com/" target="_blank" >PRODUIT FIXE SIM</a>
-                <a mat-raised-button href="https://www.google.com/" target="_blank" >PRODUIT MOBILE SIM</a>
-                <!--
-                <button  mat-raised-button class="block ">PRODUIT INTERNET SIM</button>
-                <button  mat-raised-button class="block">PRODUIT FIXE SIM</button>
-                <button  mat-raised-button class="block ">PRODUIT MOBILE SIM</button>
-                -->
+              <a
+                href="https://www.google.com/"
+                target="_blank"
+                class="underline hover:no-underline"
+              >
+                {{ type }}
+              </a>
             </div>
 
+            <!--<button mat-raised-button class="block">TELEPHONIE ET INTERNET SIM</button>-->
+          </div>
         </div>
-
+      </div>
     </div>
-
-
-    <div class="static">
-        
-        <div class="border shadow-xl  border-gray-300 w-5/12  h-44 absolute  top-60 bottom-10 left-6 right-0 bg-white">
-            
-            <div class="absolute  top-2 bottom-2 left-2 right-8">
-                <img src="../../../assets/Home/redal4.jpg" alt="" >
-            </div>
-            <div class="border-l-2  border-gray-300 absolute  top-5 bottom-10 inset-x-1/3 h-36">
-
-            </div>
-            
-            <div class="text-center py-4 text-lg text-gray-600">
-                <p>REDAL</p>
-            </div>
-
-            <div class=" absolute  top-14 bottom-10 left-52 right-5 font-bold text-sm">              
-                
-                <a mat-raised-button href="https://www.google.com/" target="_blank">FACTURES REDAL</a>
-                    
-                <!--<button mat-raised-button class="block">FACTURES REDAL</button>-->
-                
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="static">
-        
-        <div class="border shadow-xl  border-gray-300 w-5/12  h-44 absolute  top-60 bottom-10 left-15 right-10 bg-white">
-            <div class="absolute  top-0 bottom-5 left-5 right-8">
-                <img src="../../../assets/Home/amendis(2).jpg" alt="" >
-            </div>
-            <div class="border-l-2  border-gray-300 absolute  top-5 bottom-10 inset-x-1/3 h-36">
-
-            </div>
-            
-            <div class="text-center py-4 text-lg text-gray-600">
-                <p>AMENDIS TANGER</p>
-            </div>
-
-            <div class=" absolute  top-14 bottom-10 left-52 right-5 font-bold text-sm">              
-                    
-               <!-- <button mat-raised-button class="block">FACTURES AMENDIS TANGER</button>-->
-                <a mat-raised-button href="https://www.google.com/" target="_blank">FACTURES AMENDIS TANGER</a>
-                
-            </div>
-
-        </div>
-    </div>
-</div>
-</div>
+  </div>
 </div>

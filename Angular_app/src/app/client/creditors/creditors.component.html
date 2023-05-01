@@ -4,46 +4,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="creditors.component.css">
+    <link rel="stylesheet" href="creditors.component.css" />
   </head>
-  <body class="h-screen font-popins ">
-    
+  <body class="h-screen font-poppins">
     <div class="">
-    
-    <div class="absolute w-[200px] top-0 md:top-8 md:left-10">
-      
-        <img src="../../../assets/Home/logo-01.png" alt="" class="w-32 h-12 cursor-pointer"/>
-    
-    </div>
-    <div class="text-center font-bold font-poppins  text-4xl translate-y-12">
+      <div class="absolute w-[200px] top-0 md:top-8 md:left-10">
+        <img
+          src="../../../assets/Home/logo-01.png"
+          alt=""
+          class="w-45 h-16 cursor-pointer"
+        />
+      </div>
+      <div
+        class="text-center font-semibold text-4xl translate-y-12 font-poppins"
+      >
         <h1>PAY YOUR BILLS</h1>
-    </div> 
-    <div class="w-24 absolute left-3/4 origin-center rotate-12 ">
-        <img src="../../../assets/Home/wallet.png">
-    </div>
-    
-    <div class=" w-1/2 example-button-row bg-cream flex justify-between items-center rounded-t-2xl mt-20 translate-y-5 translate-x-32  border font-bold">
-        
-        <button  (click)="onTabClick('List of Creditors')" class=" active:bg-white hover:bg-white  focus:bg-white active:rounded-t-2xl rounded transition-colors  w-1/2 h-14  ">List of Creditors</button>
-        <button (click)="onTabClick('History')"class="active:bg-white hover:bg-white focus:bg-white w-1/2 h-14 ">History</button>
-    
-    </div>
-    
-    
-    <div *ngIf="activeTab == 'List of Creditors'">
-        <app-elements>
+      </div>
 
-        </app-elements>
-    </div>
-        
-        
-    <div *ngIf="activeTab == 'History'">
-        <app-payments>
+      <!-- <div class="w-20 absolute left-3/4 origin-center rotate-12">
+        <img src="../../../assets/Home/wallet.png" />
+      </div> -->
 
-        </app-payments>
-    </div>
+      <div
+        class="w-1/2 example-button-row bg-cream flex justify-between items-center rounded-t-2xl mt-20 translate-y-5 translate-x-32 border font-bold"
+      >
+        <button
+          (click)="onTabClick('List of Creditors')"
+          class="active:bg-white hover:bg-white focus:bg-white active:rounded-t-2xl rounded transition-colors w-1/2 h-14"
+        >
+          List of Creditors
+        </button>
+        <button
+          (click)="onTabClick('History')"
+          class="active:bg-white hover:bg-white focus:bg-white w-1/2 h-14"
+        >
+          History
+        </button>
+      </div>
 
-</div>
-      
+      <div *ngIf="activeTab == 'List of Creditors'">
+        <app-elements> </app-elements>
+      </div>
+
+      <div *ngIf="activeTab == 'History'">
+        <app-payments> </app-payments>
+      </div>
+    </div>
   </body>
 </html>

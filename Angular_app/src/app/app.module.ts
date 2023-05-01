@@ -16,22 +16,21 @@ import { AgentInputComponent } from './agent-profile/agent-input/agent-input.com
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientInputComponent } from './client-profile/client-input/client-input.component';
 
-
-
 import { MatTabsModule } from '@angular/material/tabs';
 import { CreditorsComponent } from './client/creditors/creditors.component';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { PaymentsComponent } from './client/creditors/payments/payments.component';
-import {MatButtonModule} from '@angular/material/button'; 
-
+import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './home/email.service';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { ElementsComponent } from './client/creditors/elements/elements.component';
+import { ElementsPipe } from './client/client/creditors/elements.pipe';
+import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie';
 
 @NgModule({
   declarations: [
@@ -52,8 +51,8 @@ import { ElementsComponent } from './client/creditors/elements/elements.componen
     HeroSectionComponent,
     NavbarComponent,
     ElementsComponent,
-   
-    
+    ElementsPipe,
+    FilterByCategorie,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +67,7 @@ import { ElementsComponent } from './client/creditors/elements/elements.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [EmailService],
   bootstrap: [AppComponent],
