@@ -1,22 +1,28 @@
 <div class="flex items-center justify-center font-poppins">
   <div
-    class="z-0 h-screen translate-y-3 bg-white rounded-[30px] shadow-md w-[90%]"
+    class="z-0 h-screen translate-y-3 bg-white rounded-[30px] shadow-md w-[90%] mb-8"
   >
-    <select
-      [(ngModel)]="selectedCategory"
-      class="w-1/2 h-10 translate-x-64 translate-y-8 outline-none box-border bg-cream rounded flex-1 px-3 py-2 cursor-pointer font-sans"
-    >
-      <option value="">All Categories</option>
-      <option value="recharges">RECHARGES</option>
-      <option value="factures">Factures</option>
-    </select>
+    <div>
+      <select
+        [(ngModel)]="selectedCategory"
+        class="w-1/2 h-10 translate-x-64 translate-y-8 outline-none box-border bg-cream rounded flex-1 px-3 py-2 cursor-pointer font-sans"
+      >
+        <option value="">All Categories</option>
+        <option value="recharges">RECHARGES</option>
+        <option value="factures">Factures</option>
+      </select>
+    </div>
 
     <div
       class="translate-y-14 flex flex-row items-center justify-center gap-5 flex-wrap"
     >
       <div
         class="border shadow-xl border-gray-300 w-[40%] h-[250px] bg-white flex flex-row items-center justify-evenly space-x-1"
-        *ngFor="let cre of creditors | FilterByCategorie : selectedCategory"
+        *ngFor="
+          let cre of creditors
+            | FilterByCategorie : selectedCategory
+            | paginate : { itemsPerPage: itemsPerPage, currentPage: page }
+        "
       >
         <div class="">
           <img src="{{ cre.logo }}" alt="" width="150px" height="150px" />
@@ -61,5 +67,15 @@
         </div>
       </div>
     </div>
+    <div class="mt-20 py-5 flex justify-center items-center">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <!-- <mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator> -->
   </div>
 </div>

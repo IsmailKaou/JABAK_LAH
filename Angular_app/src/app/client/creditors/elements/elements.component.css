@@ -1,3 +1,31 @@
 ::ng-deep .mat-raised-button {
-    @apply bg-purple-600 rounded-md;
-  }
+  @apply bg-purple-600 rounded-md;
+}
+
+.ngx-pagination {
+  padding-left: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+}
+.ngx-pagination .current,
+.btn-info {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #52e782 !important;
+  border: transparent !important;
+  border-radius: 50% !important;
+}
+
+.ngx-pagination .current:hover {
+  color: black;
+  cursor: pointer;
+  background: #17a2b8 !important;
+  border-radius: 20px !important;
+  border: transparent !important;
+}

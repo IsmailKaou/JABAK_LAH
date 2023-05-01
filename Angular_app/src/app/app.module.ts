@@ -32,6 +32,8 @@ import { ElementsComponent } from './client/creditors/elements/elements.componen
 import { ElementsPipe } from './client/client/creditors/elements.pipe';
 import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    NgxPaginationModule,
   ],
   providers: [EmailService],
   bootstrap: [AppComponent],

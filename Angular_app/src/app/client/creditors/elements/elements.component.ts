@@ -11,7 +11,7 @@ export class ElementsComponent {
   creditors = [
     {
       name: 'Maroc Telecom Recharges',
-      types: ['TELEPHONIE ET INTERNET SIM', 'Another One'],
+      types: ['TELEPHONIE ET INTERNET SIM'],
       category: 'recharges',
       logo: '../../../assets/Home/Maroc Telecom.png',
     },
@@ -33,9 +33,23 @@ export class ElementsComponent {
       category: 'factures',
       logo: '../../../assets/Home/Amendis Tanger.jpg',
     },
+    {
+      name: 'Orange Recharge',
+      types: ['TELEPHONIE ET INTERNET SIM'],
+      category: 'recharges',
+      logo: '../../../assets/Home/Orange.png',
+    },
+    {
+      name: 'Inwi Recharge',
+      types: ['TELEPHONIE ET INTERNET SIM'],
+      category: 'recharges',
+      logo: '../../../assets/Home/Inwi.jpg',
+    },
   ];
 
   selectedCategory: string = '';
+  page: number = 1;
+  itemsPerPage: number = 4;
 
   // filterCreditors(): any[] {
   //   if (this.selectedCategory === '') {
