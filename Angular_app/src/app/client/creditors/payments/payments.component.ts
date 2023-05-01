@@ -9,7 +9,7 @@ import { Payment } from './payment.interface';
 export class PaymentsComponent {
   displayedColumns: string[] = ['creditor', 'amount', 'date'];
   
-  bills : Payment[] =[
+  bills  =[
     {creditor : 'Maroc Telecom', amount: 50 , date :'12/12/2022'},
     {creditor : 'Redal', amount: 400 , date :'12/12/2022'}
 

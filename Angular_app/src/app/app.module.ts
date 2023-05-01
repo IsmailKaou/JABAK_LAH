@@ -24,10 +24,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { PaymentsComponent } from './client/creditors/payments/payments.component';
+import {MatButtonModule} from '@angular/material/button'; 
+
+
 import { HttpClientModule } from '@angular/common/http';
 import { EmailService } from './home/email.service';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
+import { ElementsComponent } from './client/creditors/elements/elements.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,9 @@ import { NavbarComponent } from './home/navbar/navbar.component';
     PaymentsComponent,
     HeroSectionComponent,
     NavbarComponent,
+    ElementsComponent,
+   
+    
   ],
   imports: [
     BrowserModule,
@@ -61,6 +68,7 @@ import { NavbarComponent } from './home/navbar/navbar.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonModule
   ],
   providers: [EmailService],
   bootstrap: [AppComponent],
