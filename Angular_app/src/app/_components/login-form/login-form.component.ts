@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -10,7 +11,7 @@ export class LoginFormComponent implements OnInit {
   @Input() inputType: 'email' | 'phone' = 'email';
   @Input() loginTitle: 'client' | 'agent';
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
       login: [
@@ -33,6 +34,9 @@ export class LoginFormComponent implements OnInit {
     } else {
       console.log('Login', form.value.login);
       console.log('Password', form.value.password);
+      if (this.loginTitle == 'client') {
+        this.router.navigate(['clientHome']);
+      }
     }
   }
 }
