@@ -34,6 +34,14 @@ import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminCrudComponent } from './admin-crud/admin-crud.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminTopbarComponent } from './admin-topbar/admin-topbar.component';
+import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
+import { AgentCrudComponent } from './agent-crud/agent-crud.component';
+import { AgentTopbarComponent } from './agent-topbar/agent-topbar.component';
+import { AgentStatisticsComponent } from './agent-statistics/agent-statistics.component';
+import { AgentChartComponent } from './agent-chart/agent-chart.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -63,6 +71,14 @@ const appRoutes: Routes = [
     ElementsComponent,
     ElementsPipe,
     FilterByCategorie,
+    AdminCrudComponent,
+    AdminDashboardComponent,
+    AdminTopbarComponent,
+    AgentDashboardComponent,
+    AgentCrudComponent,
+    AgentTopbarComponent,
+    AgentStatisticsComponent,
+    AgentChartComponent,
   ],
   imports: [
     BrowserModule,
