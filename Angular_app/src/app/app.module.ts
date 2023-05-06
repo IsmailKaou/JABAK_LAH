@@ -34,14 +34,19 @@ import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminCrudComponent } from './admin-crud/admin-crud.component';
+import { AdminCrudComponent } from './admin-dashboard/admin-crud/admin-crud.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminTopbarComponent } from './admin-topbar/admin-topbar.component';
 import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
-import { AgentCrudComponent } from './agent-crud/agent-crud.component';
-import { AgentTopbarComponent } from './agent-topbar/agent-topbar.component';
-import { AgentStatisticsComponent } from './agent-statistics/agent-statistics.component';
-import { AgentChartComponent } from './agent-chart/agent-chart.component';
+import { AgentCrudComponent } from './agent-dashboard/agent-crud/agent-crud.component';
+import { AgentTopbarComponent } from './agent-dashboard/agent-topbar/agent-topbar.component';
+import { AgentStatisticsComponent } from './agent-dashboard/agent-statistics/agent-statistics.component';
+import { AgentChartComponent } from './agent-dashboard/agent-chart/agent-chart.component';
+import { AgentFormComponent } from './admin-dashboard/agent-form/agent-form.component';
+import { ClientFormComponent } from './agent-dashboard/client-form/client-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -79,6 +84,8 @@ const appRoutes: Routes = [
     AgentTopbarComponent,
     AgentStatisticsComponent,
     AgentChartComponent,
+    AgentFormComponent,
+    ClientFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +101,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatDialogModule,
     NgxPaginationModule,
     RouterModule.forRoot(appRoutes),
   ],

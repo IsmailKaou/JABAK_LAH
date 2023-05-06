@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./agent-topbar.component.css']
 })
 export class AgentTopbarComponent {
+  isProfileMenuHidden: boolean = true;
 
+  toggleProfileMenu() {
+    this.isProfileMenuHidden = !this.isProfileMenuHidden;
+  }
 }
