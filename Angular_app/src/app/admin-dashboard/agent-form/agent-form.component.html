@@ -1,0 +1,72 @@
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 overflow-y-scroll">
+    <div class="grid grid-cols-2 xsm:grid-cols-1 gap-6 mb-4">
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+First Name        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="First Name">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2">
+            Last Name         </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="Last Name">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+          CIN
+        </label>
+        <input type="file" class="block w-full text-sm text-slate-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+      "/>      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+          N CIN
+        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder=" N CIN">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2">
+Birthday        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="date" placeholder="Birthday">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+Home address        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Home address">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field5">
+Email        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="email" placeholder="Email">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+Confirm email        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="email" placeholder="Confirm email">
+      </div>
+   
+
+    <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field5">
+Phone number        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="tel" placeholder="Phone number">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+N immatriculation        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Registration number in the commercial register">
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+            N license
+        </label>
+        <input class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Liscence number">
+      </div>
+
+    </div>
+  <div class="flex justify-end">
+    <button  class="bg-orange-400 mr-4 shadow-md hover:bg-orange-300 p-2 px-4 rounded-lg" type="submit" [disabled]="form.invalid" >Submit</button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

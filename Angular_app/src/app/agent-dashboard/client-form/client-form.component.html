@@ -1,0 +1,47 @@
+<form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8">
+    <div class="mb-4">
+      <label class="block text-zinc-500 text-sm font-bold mb-2" for="ceiling">
+        Ceiling
+      </label>
+      <div class="relative">
+        <select id="ceiling" name="ceiling" class="bg-gray-50 border h-10 border-gray-300 text-gray-600 text-sm rounded-lg focus:border-gray-500 block w-full p-2.5 ">
+            <option>Hssab 1 - 200 DH</option>
+          <option>Hssab 2 - 5000 DH</option>
+          <option>Hssab 3 - 20 000 DH</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="mb-4">
+      <label class="block text-zinc-500 text-sm font-bold mb-2" for="first-name">
+        First Name
+      </label>
+      <input class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="first-name" type="text" placeholder="First Name">
+    </div>
+    <div class="mb-4">
+      <label class="block text-zinc-500 text-sm font-bold mb-2" for="last-name">
+        Last Name
+      </label>
+      <input class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="last-name" type="text" placeholder="Last Name">
+    </div>
+    <div class="mb-4">
+      <label class="block text-zinc-500 text-sm font-bold mb-2" for="phone">
+        Phone
+      </label>
+      <input class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Phone">
+    </div>
+    <div class="mb-6">
+      <label class="block text-zinc-500 text-sm font-bold mb-2" for="email">
+        Email
+      </label>
+      <input class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+    </div>
+
+  
+    
+
+  <div class="flex justify-end">
+    <button  class="bg-orange-400 mr-4 shadow-md hover:bg-orange-300 p-2 px-4 rounded-lg" type="submit" [disabled]="form.invalid" >Submit</button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

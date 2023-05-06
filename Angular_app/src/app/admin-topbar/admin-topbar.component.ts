@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AdminTopbarComponent {
 
+  isProfileMenuHidden: boolean = true;
+
+  toggleProfileMenu() {
+    this.isProfileMenuHidden = !this.isProfileMenuHidden;
+  }
 }
