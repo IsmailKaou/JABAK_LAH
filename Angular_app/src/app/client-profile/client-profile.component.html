@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body class="h-screen font-popins">
-<!--     <header>
+    <!--     <header>
       <nav class="px-4 lg:px-6 pt-2.5">
           <div>
               <a href="#" class="flex items-center">
@@ -16,33 +16,66 @@
           </div>
       </nav>
   </header> -->
-    <section
-      class="w-full h-full bg-cream grid place-items-center p-10 md:p-0">
-      <div class="bg-white lg:w-[75%] h-full md:w-4/5 md:h-[90%] shadow-md rounded-[30px] relative">
-        <div class="bg-shiny-green h-[18%] rounded-t-[30px] z-0">
-        </div>
+    <section class="w-full h-full bg-cream grid place-items-center p-10 md:p-0">
+      <div
+        class="bg-white lg:w-[75%] h-full md:w-4/5 md:h-[90%] shadow-md rounded-[30px] relative"
+      >
+        <div class="bg-shiny-green h-[18%] rounded-t-[30px] z-0"></div>
         <div class="absolute w-[100%] z-10 grid place-items-center top-12">
-            <img src="{{client.image}}" alt="" class="w-32">
-            <div class="z-10 absolute mt-20 ml-24 bg-gray rounded-full w-10 h-10">
-            <input type="file" (change)="onFileChanged($event)"  style="display: none" requiredFileType="image/png" #fileInput>
-            <button (click)="fileInput.click()" class="m-2"><fa-icon class="fa-xl" [icon]="faCam"></fa-icon></button>   
-          </div> 
+          <img src="{{ client.image }}" alt="" class="w-32" />
+          <div class="z-10 absolute mt-20 ml-24 bg-gray rounded-full w-10 h-10">
+            <input
+              type="file"
+              (change)="onFileChanged($event)"
+              style="display: none"
+              requiredFileType="image/png"
+              #fileInput
+            />
+            <button (click)="fileInput.click()" class="m-2">
+              <fa-icon class="fa-xl" [icon]="faCam"></fa-icon>
+            </button>
+          </div>
         </div>
-        <div class="mt-24 grid grid-cols-2 md:gap-10 lg:gap-x-40 md:px-14 lg:px-32" >
-            <app-client-input (newItemEvent)="addItem($event,'First Name')"  field="First Name" [datum]="client['First Name']" type="text">
-            </app-client-input>
-            <app-client-input (newItemEvent)="addItem($event,'Last Name')"  field="Last Name" [datum]="client['Last Name']" type="text">
-            </app-client-input>
-            <app-client-input (newItemEvent)="addItem($event,'Email')"  field="Email" [datum]="client['Email']" type="text">
-            </app-client-input>
-            <app-client-input (newItemEvent)="addItem($event,'Phone')"  field="Phone" [datum]="client['Phone']" type="text">
-            </app-client-input>
-            <app-client-input (newItemEvent)="addItem($event,'Password')"  field="Password" [datum]="client['Password']" type="Password">
-            </app-client-input>
-
+        <div
+          class="mt-24 grid grid-cols-2 md:gap-10 lg:gap-x-40 md:px-14 lg:px-32"
+        >
+          <app-client-input
+            (newItemEvent)="addItem($event, 'First Name')"
+            field="First Name"
+            [datum]="client['First Name']"
+            type="text"
+          >
+          </app-client-input>
+          <app-client-input
+            (newItemEvent)="addItem($event, 'Last Name')"
+            field="Last Name"
+            [datum]="client['Last Name']"
+            type="text"
+          >
+          </app-client-input>
+          <app-client-input
+            (newItemEvent)="addItem($event, 'Email')"
+            field="Email"
+            [datum]="client['Email']"
+            type="text"
+          >
+          </app-client-input>
+          <app-client-input
+            (newItemEvent)="addItem($event, 'Phone')"
+            field="Phone"
+            [datum]="client['Phone']"
+            type="text"
+          >
+          </app-client-input>
+          <app-client-input
+            (newItemEvent)="addItem($event, 'Password')"
+            field="Password"
+            [datum]="client['Password']"
+            type="Password"
+          >
+          </app-client-input>
         </div>
       </div>
     </section>
-    
   </body>
 </html>

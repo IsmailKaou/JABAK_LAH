@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { EmailService } from '../email.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-us-about-us-home',
@@ -16,13 +17,15 @@ import { EmailService } from '../email.service';
 export class ContactUsAboutUsHomeComponent implements OnInit {
   faCoffee = faCoffee;
 
-  // name: string;
-  // email: string;
-  // body: string;
-
   contactForm: FormGroup;
 
-  constructor(private builder: FormBuilder, private contact: EmailService) {}
+  endpointUrl: string = '/api/ws';
+
+  constructor(
+    private builder: FormBuilder,
+    private contact: EmailService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
