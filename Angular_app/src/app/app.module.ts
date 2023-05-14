@@ -29,7 +29,7 @@ import { EmailService } from './home/email.service';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { ElementsComponent } from './client/creditors/elements/elements.component';
-import { ElementsPipe } from './client/client/creditors/elements.pipe';
+// import { ElementsPipe } from './client/client/creditors/elements.pipe';
 import { FilterByCategorie } from './client/creditors/elements/FilterByCategorie';
 
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -45,14 +45,25 @@ import { AgentChartComponent } from './agent-dashboard/agent-chart/agent-chart.c
 import { AgentFormComponent } from './admin-dashboard/agent-form/agent-form.component';
 import { ClientFormComponent } from './agent-dashboard/client-form/client-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
+import { ResetPasswordComponent } from './_components/reset-password/reset-password.component';
+import { ClientTopbarComponent } from './client/client-topbar/client-topbar.component';
+import { AuthGuard } from './_components/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'clientLogin', component: ClientComponent },
   { path: 'agentLogin', component: AgentComponent },
-  { path: 'clientHome', component: CreditorsComponent },
+  {
+    path: 'clientHome',
+    component: CreditorsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
@@ -74,7 +85,6 @@ const appRoutes: Routes = [
     HeroSectionComponent,
     NavbarComponent,
     ElementsComponent,
-    ElementsPipe,
     FilterByCategorie,
     AdminCrudComponent,
     AdminDashboardComponent,
@@ -86,6 +96,8 @@ const appRoutes: Routes = [
     AgentChartComponent,
     AgentFormComponent,
     ClientFormComponent,
+    ResetPasswordComponent,
+    ClientTopbarComponent,
   ],
   imports: [
     BrowserModule,

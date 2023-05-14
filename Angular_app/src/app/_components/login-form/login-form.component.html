@@ -8,21 +8,44 @@
     <p class="text-xs text-[#C7C6C2] text-center px-7 py-5">
       Hey , Enter your details to get sign in to your account
     </p>
+    <!-- alert for log in error -->
+    <div
+      class="flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
+      role="alert"
+      *ngIf="error"
+    >
+      <svg
+        aria-hidden="true"
+        class="flex-shrink-0 inline w-5 h-5 mr-3"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+      <span class="sr-only">Error Login</span>
+      <div><span class="font-bold">Error Login!</span> {{ error }}</div>
+    </div>
     <form
       [formGroup]="loginForm"
-      (ngSubmit)="onSubmit(loginForm)"
+      (ngSubmit)="onSubmit(loginForm.value)"
       class="space-y-6"
     >
       <div>
         <input
           class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
-          formControlName="login"
           [placeholder]="
             inputType === 'email'
               ? 'Enter your email'
               : 'Enter your phone number'
           "
-          type="{{ inputType === 'email' ? 'email' : 'tel' }}"
+          name="login"
+          formControlName="login"
+          type="{{ inputType === 'email' ? 'email' : 'text' }}"
         />
       </div>
       <div
@@ -47,9 +70,10 @@
       <div>
         <input
           class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
-          formControlName="password"
           placeholder="Password"
           type="password"
+          name="password"
+          formControlName="password"
         />
       </div>
       <div
@@ -72,6 +96,14 @@
           Sign in
         </button>
       </div>
+      <!-- <div class="flex items-center justify-center" *ngIf="error">
+        <p
+          class="p-5 rounded-lg font-semibold text-sm"
+          [ngStyle]="{ color: 'red' }"
+        >
+          {{ error }}
+        </p>
+      </div> -->
     </form>
   </div>
 </div>
