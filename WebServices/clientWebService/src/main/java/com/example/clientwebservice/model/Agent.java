@@ -1,4 +1,4 @@
-package com.example.clientwebservice.dataModel;
+package com.example.clientwebservice.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

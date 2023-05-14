@@ -4,7 +4,7 @@ package com.example.clientwebservice.service;
 import com.example.clientwebservice.AgentDetails;
 import com.example.clientwebservice.CreateAgentRequest;
 import com.example.clientwebservice.CreateAgentResponse;
-import com.example.clientwebservice.dataModel.Agent;
+import com.example.clientwebservice.model.Agent;
 import com.example.clientwebservice.repository.AgentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
