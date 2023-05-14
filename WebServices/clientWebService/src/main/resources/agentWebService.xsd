@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/agentservice"
+           xmlns:tns="http://example.com/agentservice"
+           elementFormDefault="qualified">
+
+    <xs:element name="createAgentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="agentDetails" type="tns:agentDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="createAgentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isCreated" type="xs:boolean" />
+                <xs:element name="errorMessage" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="agentDetails">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="cin" type="xs:string"/>
+            <xs:element name="addresse" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="immatriculation" type="xs:string"/>
+            <xs:element name="license" type="xs:string"/>
+            <xs:element name="cinPicture" type="xs:string"/>
+            <xs:element name="birthday" type="xs:date"/>
+
+
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

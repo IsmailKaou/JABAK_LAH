@@ -40,12 +40,11 @@ import jakarta.xml.bind.annotation.XmlType;
     "isCreated",
     "errorMessage"
 })
-@XmlRootElement(name = "createClientResponse", namespace = "http://example.com/clientservice")
-public class CreateClientResponse {
+@XmlRootElement(name = "createAgentResponse")
+public class CreateAgentResponse {
 
-    @XmlElement(namespace = "http://example.com/clientservice")
     protected boolean isCreated;
-    @XmlElement(namespace = "http://example.com/clientservice", required = true)
+    @XmlElement(required = true)
     protected String errorMessage;
 
     /**

@@ -25,8 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="isCreated" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="errorMessage" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="agentDetails" type="{http://example.com/agentservice}agentDetails"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,55 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "isCreated",
-    "errorMessage"
+    "agentDetails"
 })
-@XmlRootElement(name = "createClientResponse", namespace = "http://example.com/clientservice")
-public class CreateClientResponse {
+@XmlRootElement(name = "createAgentRequest")
+public class CreateAgentRequest {
 
-    @XmlElement(namespace = "http://example.com/clientservice")
-    protected boolean isCreated;
-    @XmlElement(namespace = "http://example.com/clientservice", required = true)
-    protected String errorMessage;
+    @XmlElement(required = true)
+    protected AgentDetails agentDetails;
 
     /**
-     * Gets the value of the isCreated property.
-     * 
-     */
-    public boolean isIsCreated() {
-        return isCreated;
-    }
-
-    /**
-     * Sets the value of the isCreated property.
-     * 
-     */
-    public void setIsCreated(boolean value) {
-        this.isCreated = value;
-    }
-
-    /**
-     * Gets the value of the errorMessage property.
+     * Gets the value of the agentDetails property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link AgentDetails }
      *     
      */
-    public String getErrorMessage() {
-        return errorMessage;
+    public AgentDetails getAgentDetails() {
+        return agentDetails;
     }
 
     /**
-     * Sets the value of the errorMessage property.
+     * Sets the value of the agentDetails property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link AgentDetails }
      *     
      */
-    public void setErrorMessage(String value) {
-        this.errorMessage = value;
+    public void setAgentDetails(AgentDetails value) {
+        this.agentDetails = value;
     }
 
 }
