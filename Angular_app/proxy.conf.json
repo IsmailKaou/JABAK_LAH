@@ -1,9 +1,9 @@
 {
-  "/api": {
-    "target": "http://localhost:8081/",
+  "/apis": {
+    "target": "http://localhost:2001/",
     "secure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/apis": ""
     }
   },
   "logLevel": "debug"

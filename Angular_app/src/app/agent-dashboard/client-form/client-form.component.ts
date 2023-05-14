@@ -62,12 +62,12 @@ export class ClientFormComponent implements OnInit {
       </Envelope>`;
 
     const headers = {
-      SOAPAction: '/api/createClient',
+      SOAPAction: '/apis/createClient',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/api/ws', request, {
+      .post('/apis/ws', request, {
         headers: headers,
         responseType: 'text',
       })
@@ -77,7 +77,9 @@ export class ClientFormComponent implements OnInit {
         const isCreated =
           xmlResponse.getElementsByTagName('ns2:isCreated')[0].textContent ===
           'true';
+
         this.isClientCreated = isCreated;
+
         if (isCreated) {
           console.log('Client created successfully');
           this.wsResponse = 'Client created successfully';

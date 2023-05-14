@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="creditors.component.css" />
   </head>
   <body class="h-screen font-poppins">
+    <app-client-topbar></app-client-topbar>
     <div class="">
-      <div class="absolute w-[200px] top-0 md:top-8 md:left-10">
+      <!-- <div class="absolute w-[200px] top-0 md:top-8 md:left-10">
         <img
           src="../../../assets/Home/logo-01.png"
           alt=""
           class="w-45 h-16 cursor-pointer"
         />
-      </div>
+      </div> -->
       <div
-        class="text-center font-semibold text-4xl translate-y-12 font-poppins"
+        class="text-center font-semibold text-4xl translate-y-10 font-poppins max-w-fit mx-auto"
       >
         <h1>PAY YOUR BILLS</h1>
       </div>
@@ -26,7 +27,7 @@
       </div> -->
 
       <div
-        class="w-1/2 example-button-row bg-cream flex justify-between items-center rounded-t-2xl mt-20 translate-y-5 translate-x-32 border font-bold"
+        class="w-1/2 example-button-row bg-cream flex justify-between items-center rounded-t-2xl mt-10 translate-y-5 translate-x-32 border font-bold"
       >
         <button
           (click)="onTabClick('List of Creditors')"
