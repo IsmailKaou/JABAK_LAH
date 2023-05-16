@@ -28,6 +28,8 @@ public class Agent {
     private String immatriculation;
     private String license;
     private String cinPicture;
+    private Role role;
+
 
     public void setBirthday(XMLGregorianCalendar xmlDate) {
         GregorianCalendar calendar = xmlDate.toGregorianCalendar();

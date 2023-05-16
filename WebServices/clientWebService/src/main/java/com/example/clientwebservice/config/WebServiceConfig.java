@@ -15,7 +15,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig {
 
-    @Bean
+    @Bean(name="clientMessageDispatcher")
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context){
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(context);
@@ -26,7 +26,7 @@ public class WebServiceConfig {
     @Bean(name = "clients")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("CreateClient");
+        wsdl11Definition.setPortTypeName("createClient");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://example.com/clientservice");
         wsdl11Definition.setSchema(schema);
