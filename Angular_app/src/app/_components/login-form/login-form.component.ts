@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class LoginFormComponent implements OnInit {
   @Input() inputType: 'email' | 'phone' = 'email';
   @Input() loginTitle: 'client' | 'agent';
   loginForm: FormGroup;
+  @Output() loginFormEvent = new EventEmitter<any>();
   constructor(private fb: FormBuilder, private router: Router) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -28,14 +29,17 @@ export class LoginFormComponent implements OnInit {
       password: ['', [Validators.required]],
     });
   }
-  onSubmit(form: FormGroup) {
+  onSubmit(form: any) {
     if (this.loginForm.invalid) {
       console.log('invalid');
     } else {
-      console.log('Login', form.value.login);
-      console.log('Password', form.value.password);
+      console.log('Login', form.login);
+      console.log('Password', form.password);
       if (this.loginTitle == 'client') {
         this.router.navigate(['clientHome']);
+      }
+      else{
+        this.loginFormEvent.emit(form);
       }
     }
   }

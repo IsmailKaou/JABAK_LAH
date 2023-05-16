@@ -3,21 +3,21 @@ package com.example.clientwebservice.service;
 import com.example.clientwebservice.ClientDetails;
 import com.example.clientwebservice.CreateClientRequest;
 import com.example.clientwebservice.CreateClientResponse;
-import com.example.clientwebservice.dataModel.BankAccountCrud;
-import com.example.clientwebservice.dataModel.Client;
-import com.example.clientwebservice.dataModel.ClientCrud;
+import com.example.clientwebservice.repository.BankRepository;
+import com.example.clientwebservice.model.Client;
+import com.example.clientwebservice.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CreateClientService {
-    private BankAccountCrud bankAccountCrud;
-    private ClientCrud clientCrud;
+    private BankRepository bankRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
-    public CreateClientService(BankAccountCrud bankAccountCrud, ClientCrud clientCrud) {
-        this.bankAccountCrud = bankAccountCrud;
-        this.clientCrud = clientCrud;
+    public CreateClientService(BankRepository bankRepository, ClientRepository clientRepository) {
+        this.bankRepository = bankRepository;
+        this.clientRepository = clientRepository;
     }
 
     public CreateClientResponse createClient(CreateClientRequest request){
@@ -41,17 +41,17 @@ public class CreateClientService {
         client.setPhoneNumber(clientDetails.getPhoneNumber());
         client.setEmailAddress(clientDetails.getEmailAddress());
         client.setCeiling(clientDetails.getCeiling());
-        clientCrud.save(client);
+        clientRepository.save(client);
         response.setIsCreated(true);
         response.setErrorMessage(null);
         return response;
     }
 
     public boolean isClientHadBankAccount(String phone){
-        return bankAccountCrud.findByPhoneNumber(phone)!=null;
+        return bankRepository.findByPhoneNumber(phone)!=null;
     }
     public boolean isClientAlreadyHadJabakalahClient(String phone){
-        return clientCrud.findByPhoneNumber(phone)!=null;
+        return clientRepository.findByPhoneNumber(phone)!=null;
     }
 
 }

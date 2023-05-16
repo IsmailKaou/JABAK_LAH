@@ -10,7 +10,7 @@
     </p>
     <form
       [formGroup]="loginForm"
-      (ngSubmit)="onSubmit(loginForm)"
+      (ngSubmit)="onSubmit(loginForm.value)"
       class="space-y-6"
     >
       <div>

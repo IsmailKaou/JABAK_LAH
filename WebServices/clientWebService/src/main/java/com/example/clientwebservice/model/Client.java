@@ -1,32 +1,32 @@
-package com.example.clientwebservice.dataModel;
+package com.example.clientwebservice.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Bank")
-public class BankAccount {
+@Table(name = "clients")
+public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String firstName;
     private String lastName;
-    private String emailAddress;
     private String phoneNumber;
+    private String ceiling;
+    private String emailAddress;
 
-    @Column(nullable = false)
-    private double balance;
-
-    public BankAccount(String firstName, String lastName, String emailAddress, String phoneNumber) {
+    public Client(String firstName, String lastName, String phoneNumber, String emailAddress,String ceiling) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.ceiling=ceiling;
     }
 }

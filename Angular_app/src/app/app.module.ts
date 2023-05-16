@@ -48,11 +48,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'clientLogin', component: ClientComponent },
   { path: 'agentLogin', component: AgentComponent },
   { path: 'clientHome', component: CreditorsComponent },
+  { path: 'agentHome',component:AgentDashboardComponent}
 ];
 
 @NgModule({

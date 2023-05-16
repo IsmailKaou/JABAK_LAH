@@ -62,12 +62,12 @@ export class ClientFormComponent implements OnInit {
       </Envelope>`;
 
     const headers = {
-      SOAPAction: '/api/createClient',
+      SOAPAction: '/apis/createClient',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/api/ws', request, {
+      .post('/apis/ws', request, {
         headers: headers,
         responseType: 'text',
       })
