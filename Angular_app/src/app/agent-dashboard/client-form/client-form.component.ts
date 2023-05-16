@@ -77,7 +77,9 @@ export class ClientFormComponent implements OnInit {
         const isCreated =
           xmlResponse.getElementsByTagName('ns2:isCreated')[0].textContent ===
           'true';
+
         this.isClientCreated = isCreated;
+
         if (isCreated) {
           console.log('Client created successfully');
           this.wsResponse = 'Client created successfully';

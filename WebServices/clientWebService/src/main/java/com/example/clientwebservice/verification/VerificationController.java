@@ -1,4 +1,4 @@
-package com.example.clientwebservice.verfication;
+package com.example.clientwebservice.verification;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v2/verify")
+@RequestMapping("/api/v1/verify")
 @RequiredArgsConstructor
-public class AgentVerificationController {
-    private final AgentVerificationService service;
+public class VerificationController {
+    private final VerificationService service;
     @PostMapping
     public ResponseEntity<VerificationResponse> activate(
             @RequestBody VerificationRequest request, @RequestHeader Map<String, String> headers){

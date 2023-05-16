@@ -1,4 +1,4 @@
-package com.example.clientwebservice.verfication;
+package com.example.clientwebservice.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class VerificationResponse {
-    private String msg;
+public class AuthenticationRequest {
+    private String phoneNumber;
+    private String password;
 }

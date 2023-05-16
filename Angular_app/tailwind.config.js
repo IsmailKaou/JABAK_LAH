@@ -3,7 +3,10 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ["./src/**/*.{html,ts}",],
+  plugins: [
+    require('flowbite/plugin')
+  ],
+  content: ["./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js"],
   theme: {
     colors: {
       transparent: "transparent",
