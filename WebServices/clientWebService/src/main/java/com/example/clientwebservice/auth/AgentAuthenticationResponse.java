@@ -1,5 +1,6 @@
 package com.example.clientwebservice.auth;
 
+import com.example.clientwebservice.model.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,5 +22,7 @@ public class AgentAuthenticationResponse {
     private String lastName;
     private String email;
     private boolean isTokenValid;
-    private String role;
+    private Role status;
+    private long expirationIn;
+
 }

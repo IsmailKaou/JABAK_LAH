@@ -20,7 +20,7 @@ export interface AuthResponse {
 })
 
 export class AgentComponent {
-  constructor(
+/*   constructor(
     private http: HttpClient,
     private router: Router
   ){}
@@ -40,4 +40,5 @@ export class AgentComponent {
     });
 
 
-  }}
+  } */
+}

@@ -22,20 +22,18 @@ public class Agent implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String firstName;
     private String lastName;
-    private String idPiece;
-    private String idNumber;
-    private Date birthday;
-    private String adresse;
+    private String cin;
+    private Date birthday ;
+    private String addresse;
     private String email;
-    private String confEmail;
-    private String phoneNumber;
-    private String immatriculationNumber;
-    private String patenteNumber;
+    private String phone;
+    private String immatriculation;
+    private String license;
+    private String cinPicture;
+
     private String password;
-    private boolean active = false;
 
     @Enumerated(EnumType.STRING)
     private Role role;

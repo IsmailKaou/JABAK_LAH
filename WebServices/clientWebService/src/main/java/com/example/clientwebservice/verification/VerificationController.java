@@ -15,7 +15,10 @@ public class VerificationController {
     public ResponseEntity<VerificationResponse> activate(
             @RequestBody VerificationRequest request, @RequestHeader Map<String, String> headers){
         String authHeader = headers.get("authorization");
-        System.out.println("/n"+authHeader+"/n");
+        for(int i=0;i<10;i++)
+        {
+            System.out.println("Helloo");
+        }
         return ResponseEntity.ok(service.verify(request,authHeader));
 
     }

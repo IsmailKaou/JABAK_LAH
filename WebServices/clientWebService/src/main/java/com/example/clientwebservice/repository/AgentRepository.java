@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface AgentRepository extends CrudRepository<Agent, Integer> {
     Optional<Agent> findAgentByEmail(String email);
+    Agent findByCin(String cin);
 }

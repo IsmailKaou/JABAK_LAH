@@ -60,6 +60,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'agentHome',
+    component: AgentDashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'reset-password',
     component: ResetPasswordComponent,
     canActivate: [AuthGuard],

@@ -17,17 +17,31 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService service;
+    private final RegisterService registerservice;
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.authenticate(request));
 
     }
-    @PostMapping("/refresh-token")
-    public void refreshToken(
-            HttpServletRequest request,
-            HttpServletResponse response
-            ) throws IOException {
-        service.refreshToken(request, response);
+    @PostMapping("/authenticate/agent")
+    public ResponseEntity<AgentAuthenticationResponse> authenticate(
+            @RequestBody AgentAuthenticationRequest request
+    ){
+        return ResponseEntity.ok(service.authenticateAgent(request));
     }
+    @PostMapping("/register")
+    public ResponseEntity<AgentAuthenticationResponse> register(
+            @RequestBody AgentAuthenticationRequest request
+    ){
+        return ResponseEntity.ok(registerservice.register(request));
+    }
+//    @PostMapping("/refresh-token")
+//    public void refreshToken(
+//            HttpServletRequest request,
+//            HttpServletResponse response
+//            ) throws IOException {
+//        service.refreshAgentToken(request, response);
+//    }
 }

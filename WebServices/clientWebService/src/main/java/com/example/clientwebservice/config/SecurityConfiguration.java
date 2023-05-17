@@ -32,12 +32,12 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests(auth -> auth
                         // * we add a white list
-                        .requestMatchers( new AntPathRequestMatcher("/ws/clients.wsdl"),
-                                new AntPathRequestMatcher("/api/v1/auth/**"),
-//                                new AntPathRequestMatcher("/api/v1/client"),
-                                new AntPathRequestMatcher("/ws/**")).permitAll()
+                                .requestMatchers( new AntPathRequestMatcher("/ws/clients.wsdl"),
+                                        new AntPathRequestMatcher("/api/v1/auth/**"),
+                                        new AntPathRequestMatcher("api/v1/verify"),
+                                        new AntPathRequestMatcher("/ws/**")).permitAll()
                         .requestMatchers("api/v1/client/**").hasRole(Role.VERIFIED_USER.name())
-                        .requestMatchers("api/v1/verify").hasAnyRole(Role.VERIFIED_USER.name(),Role.UNVERIFIED_USER.name())
+//                        .requestMatchers("api/v1/verify").hasAnyRole(Role.VERIFIED_USER.name(),Role.UNVERIFIED_USER.name())
                         .anyRequest().authenticated()
                 )
                 .sessionManagement()

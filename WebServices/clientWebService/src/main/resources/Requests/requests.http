@@ -10,7 +10,7 @@ SoapAction: http://localhost:2001/createClient
             <clientDetails>
                 <firstName>Ismail</firstName>
                 <lastName>Ismail</lastName>
-                <phoneNumber>0605809656</phoneNumber>
+                <phoneNumber>0601020304</phoneNumber>
                 <ceiling>2000</ceiling>
                 <emailAddress>ismailkaou12@gmail.com</emailAddress>
             </clientDetails>
@@ -27,9 +27,28 @@ POST http://localhost:2001/api/v1/auth/authenticate
 Content-Type: application/json
 
 {
-  "phoneNumber": "0605809656",
-  "password": "gW9v2N4DOh"
+  "phoneNumber": "0601020304",
+  "password": "GUda7TGsm7"
 
+}
+
+### Register Agent
+POST http://localhost:2001/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email":"jtr@gmail.com",
+  "password":"12345"
+}
+
+
+### Agent Login
+POST http://localhost:2001/api/v1/auth/authenticate/agent
+Content-Type: application/json
+
+{
+  "email":"goddamn@gmail.com",
+  "password":"12345"
 }
 
 ### Logout
@@ -50,7 +69,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwNjA1ODA5NjU2IiwiaWF0IjoxN
 ### Verify User
 POST http://localhost:2001/api/v1/verify
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwNjA1ODA5NjU2IiwiaWF0IjoxNjgzOTg4Nzk5LCJleHAiOjE2ODM5OTAyMzl9.0QsZ-uTY-0jPLha-mv57jsFsiUkiiHRKiH9uFC-HCRQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWNrLnNwYXJyb3dAZ21haWwuY29tIiwiaWF0IjoxNjg0MjY1NDU1LCJleHAiOjE2ODQyNjYzNTV9.PwesNyoRRA5-mDeIJiY9sG4PBN6DnL_Q2zn_Hu78wFc
 
 {
   "newPassword" : "IsmailKaou"
