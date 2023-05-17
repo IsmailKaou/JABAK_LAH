@@ -113,6 +113,7 @@
                 <configuration>
                     <packageName>com.example.clientwebservice</packageName>
                     <sources>
+                        <source>${project.basedir}/src/main/resources/agentWebService.xsd</source>
                         <source>${project.basedir}/src/main/resources/clientWebService.xsd</source>
                     </sources>
                     <outputDirectory>${project.basedir}/src/main/java</outputDirectory>

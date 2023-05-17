@@ -13,28 +13,30 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class WebServiceConfig {
 
-    @Bean(name="clientMessageDispatcher")
-    public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context){
+public class AgentWebServiceConfig {
+    @Bean(name="agentMessageDispatcher")
+    public ServletRegistrationBean<MessageDispatcherServlet> agentMessageDispatcherServlet(ApplicationContext context){
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(context);
         servlet.setTransformWsdlLocations(true);
         return  new ServletRegistrationBean<>(servlet,"/ws/*");
     }
 
-    @Bean(name = "clients")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
+    @Bean(name = "agents")
+    public DefaultWsdl11Definition agentWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("createClient");
+        wsdl11Definition.setPortTypeName("createAgent");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://example.com/clientservice");
+        wsdl11Definition.setTargetNamespace("http://example.com/agentservice");
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
     }
 
     @Bean
-    public XsdSchema schema(){
-        return new SimpleXsdSchema(new ClassPathResource("clientWebService.xsd"));
+    public XsdSchema agentschema(){
+        return new SimpleXsdSchema(new ClassPathResource("agentWebService.xsd"));
     }
+
+
 }
