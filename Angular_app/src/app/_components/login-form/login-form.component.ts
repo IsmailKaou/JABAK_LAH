@@ -88,7 +88,7 @@ export class LoginFormComponent implements OnInit {
             if (response.status === 'VERIFIED_USER') {
               this.router.navigate(['/agentHome']);
             } else {
-              this.router.navigate(['/reset-password']);
+              this.router.navigate(['/agent-reset-password']);
             }
           },
           (errorMessage) => {

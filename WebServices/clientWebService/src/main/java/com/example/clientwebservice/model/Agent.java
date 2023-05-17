@@ -6,8 +6,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Getter
@@ -40,6 +42,13 @@ public class Agent implements UserDetails {
 
     @OneToMany(mappedBy = "agent")
     private List<AgentToken> agentTokens;
+
+
+    public void setBirthday(XMLGregorianCalendar xmlDate) {
+        GregorianCalendar calendar = xmlDate.toGregorianCalendar();
+
+        this.birthday = calendar.getTime();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

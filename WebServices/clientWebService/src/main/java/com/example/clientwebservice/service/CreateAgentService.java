@@ -5,14 +5,20 @@ import com.example.clientwebservice.AgentDetails;
 import com.example.clientwebservice.CreateAgentRequest;
 import com.example.clientwebservice.CreateAgentResponse;
 import com.example.clientwebservice.model.Agent;
+import com.example.clientwebservice.model.Role;
 import com.example.clientwebservice.repository.AgentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CreateAgentService {
-    @Autowired
-    private AgentRepository agentRepository;
+    private final AgentRepository agentRepository;
+    private final RandomPasswordGenerator randomPasswordGenerator;
+    private final PasswordEncoder passwordEncoder;
+    private final EmailSenderService senderService;
     public CreateAgentResponse createAgent(CreateAgentRequest request){
 
         CreateAgentResponse response = new CreateAgentResponse();
@@ -25,8 +31,8 @@ public class CreateAgentService {
         }
 
         Agent agent = new Agent();
-
-
+        String password = randomPasswordGenerator.generatePassayPassword();
+        System.out.println(password);
         agent.setFirstName(agentDetails.getFirstName());
         agent.setLastName(agentDetails.getLastName());
         agent.setAddresse(agentDetails.getAddresse());
@@ -37,8 +43,12 @@ public class CreateAgentService {
         agent.setLicense(agentDetails.getLicense());
         agent.setImmatriculation(agentDetails.getImmatriculation());
         agent.setCinPicture(agentDetails.getCinPicture());
+        agent.setPassword(passwordEncoder.encode(password));
+        agent.setRole(Role.UNVERIFIED_USER);
 
         agentRepository.save(agent);
+
+//        senderService.sendEmail(agentDetails.getEmail(),"This is your password",password);
         response.setIsCreated(true);
         response.setErrorMessage(null);
         return response;

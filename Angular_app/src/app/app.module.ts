@@ -47,8 +47,10 @@ import { ClientFormComponent } from './agent-dashboard/client-form/client-form.c
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ResetPasswordComponent } from './_components/reset-password/reset-password.component';
+import { AgentResetPasswordComponent } from './_components/agent-reset-password/agent-reset-password.component';
 import { ClientTopbarComponent } from './client/client-topbar/client-topbar.component';
 import { AuthGuard } from './_components/auth.guard';
+import { AuthAgentGuard } from './_components/authAgent.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -62,12 +64,15 @@ const appRoutes: Routes = [
   {
     path: 'agentHome',
     component: AgentDashboardComponent,
-    canActivate: [AuthGuard],
+  },
+  {
+    path: 'agent-reset-password',
+    component: AgentResetPasswordComponent,
+
   },
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
-    canActivate: [AuthGuard],
   },
   { path: '**', component: HomeComponent },
 ];
@@ -104,6 +109,7 @@ const appRoutes: Routes = [
     ClientFormComponent,
     ResetPasswordComponent,
     ClientTopbarComponent,
+    AgentResetPasswordComponent
   ],
   imports: [
     BrowserModule,
