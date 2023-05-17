@@ -15,12 +15,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour clientDetails complex type.
+ * <p>Classe Java pour ClientInfo complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="clientDetails"&gt;
+ * &lt;complexType name="ClientInfo"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -38,14 +38,14 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "clientDetails", namespace = "http://example.com/clientservice", propOrder = {
+@XmlType(name = "ClientInfo", namespace = "http://example.com/clientlist", propOrder = {
     "firstName",
     "lastName",
     "phoneNumber",
     "ceiling",
     "emailAddress"
 })
-public class ClientDetails {
+public class ClientInfo {
 
     @XmlElement(required = true)
     protected String firstName;

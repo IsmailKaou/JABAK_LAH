@@ -10,7 +10,6 @@ package com.example.clientwebservice;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="clientDetails" type="{http://example.com/clientservice}clientDetails"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,37 +33,9 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "clientDetails"
-})
-@XmlRootElement(name = "createClientRequest", namespace = "http://example.com/clientservice")
-public class CreateClientRequest {
+@XmlType(name = "")
+@XmlRootElement(name = "getClientsRequest", namespace = "http://example.com/clientlist")
+public class GetClientsRequest {
 
-    @XmlElement(namespace = "http://example.com/clientservice", required = true)
-    protected ClientDetails clientDetails;
-
-    /**
-     * Obtient la valeur de la propriété clientDetails.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ClientDetails }
-     *     
-     */
-    public ClientDetails getClientDetails() {
-        return clientDetails;
-    }
-
-    /**
-     * Définit la valeur de la propriété clientDetails.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ClientDetails }
-     *     
-     */
-    public void setClientDetails(ClientDetails value) {
-        this.clientDetails = value;
-    }
 
 }

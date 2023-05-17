@@ -37,4 +37,19 @@ public class WebServiceConfig {
     public XsdSchema schema(){
         return new SimpleXsdSchema(new ClassPathResource("clientWebService.xsd"));
     }
+
+    @Bean(name = "clientlist")
+    public DefaultWsdl11Definition defaultWsdl11DefinitionList(XsdSchema ClientListSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("clientlist");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://example.com/clientlist");
+        wsdl11Definition.setSchema(ClientListSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema ClientListSchema(){
+        return new SimpleXsdSchema(new ClassPathResource("clientsWebService.xsd"));
+    }
 }

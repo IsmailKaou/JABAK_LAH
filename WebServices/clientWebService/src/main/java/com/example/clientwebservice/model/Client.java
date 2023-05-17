@@ -1,5 +1,6 @@
 package com.example.clientwebservice.model;
 
+import com.example.clientwebservice.ClientInfo;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,7 +33,8 @@ public class Client implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "client")
+
+    @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
     private List<Token> tokens;
 
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par Eclipse Implementation of JAXB, v3.0.0 
+Voir https://eclipse-ee4j.github.io/jaxb-ri 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2023.05.17 à 10:18:51 AM WEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/agentservice">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:createAgentRequest">
+      <class ref="com.example.clientwebservice.CreateAgentRequest"/>
+    </bindings>
+    <bindings scd="~tns:agentDetails">
+      <class ref="com.example.clientwebservice.AgentDetails"/>
+    </bindings>
+    <bindings scd="tns:createAgentResponse">
+      <class ref="com.example.clientwebservice.CreateAgentResponse"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/clientservice">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:createClientRequest">
+      <class ref="com.example.clientwebservice.CreateClientRequest"/>
+    </bindings>
+    <bindings scd="~tns:clientDetails">
+      <class ref="com.example.clientwebservice.ClientDetails"/>
+    </bindings>
+    <bindings scd="tns:createClientResponse">
+      <class ref="com.example.clientwebservice.CreateClientResponse"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/clientlist">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:getClientsRequest">
+      <class ref="com.example.clientwebservice.GetClientsRequest"/>
+    </bindings>
+    <bindings scd="tns:getClientsResponse">
+      <class ref="com.example.clientwebservice.GetClientsResponse"/>
+    </bindings>
+    <bindings scd="~tns:clientInfo">
+      <class ref="com.example.clientwebservice.ClientInfo"/>
+    </bindings>
+  </bindings>
+</bindings>
+

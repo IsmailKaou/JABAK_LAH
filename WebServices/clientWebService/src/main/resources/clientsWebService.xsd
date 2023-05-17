@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/clientlist"
+           xmlns:tns="http://example.com/clientlist"
+           elementFormDefault="qualified">
+
+    <xs:element name="getClientsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- no input parameters needed -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getClientsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="allClients" type="tns:ClientInfo" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="ClientInfo">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="phoneNumber" type="xs:string"/>
+            <xs:element name="ceiling" type="xs:string"/>
+            <xs:element name="emailAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+<!--    <xs:element name="getClientsResponse">-->
+<!--        <xs:complexType>-->
+<!--            <xs:sequence>-->
+<!--                <xs:element name="clients" >-->
+<!--                <xs:complexType>-->
+<!--                    <xs:sequence>-->
+<!--                        <xs:element name="clientInfo" minOccurs="0" maxOccurs="unbounded">-->
+<!--                        <xs:complexType>-->
+<!--                            <xs:sequence>-->
+<!--                              <xs:element name="firstName" type="xs:string"/>-->
+<!--                              <xs:element name="lastName" type="xs:string"/>-->
+<!--                        <xs:element name="phoneNumber" type="xs:string"/>-->
+<!--                        <xs:element name="ceiling" type="xs:string"/>-->
+<!--                        <xs:element name="emailAddress" type="xs:string"/>-->
+<!--                            </xs:sequence>-->
+<!--                        </xs:complexType>-->
+<!--                        </xs:element>-->
+<!--                    </xs:sequence>-->
+<!--                </xs:complexType>-->
+<!--                </xs:element>-->
+<!--            </xs:sequence>-->
+<!--        </xs:complexType>-->
+<!--    </xs:element>-->
+
+
+
+
+</xs:schema>
