@@ -1,0 +1,15 @@
+<div class="relative">
+    <label for="{{field}}">{{field}}</label>
+    <input
+      #newItem
+      class="mt-2 w-full text-sm text-gray border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
+      value="{{datum}}"
+      [disabled]="disabled"
+      (keyup.enter)="onEdit(newItem.value)"
+      id={{field}}
+      type="{{type}}"
+    />
+    <button type="submit" (click)="onEdit(newItem.value)" class="absolute right-2.5 bottom-2.5">
+      <fa-icon [styles]="{'color': 'gray'}" [icon]="faPen"></fa-icon>
+    </button>
+  </div>

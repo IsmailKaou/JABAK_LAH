@@ -1,0 +1,135 @@
+<form
+  class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8"
+  [formGroup]="getActiveForm()"
+  (ngSubmit)="onSubmit(getActiveForm().value)"
+>
+  <div class="mb-4">
+    <label class="block text-zinc-500 text-sm font-bold mb-2" for="ceiling">
+      Ceiling
+    </label>
+    <div class="relative">
+      <select
+        id="ceiling"
+        name="ceiling"
+        class="bg-gray-50 border h-10 border-gray-300 text-gray-600 text-sm rounded-lg focus:border-gray-500 block w-full p-2.5"
+        formControlName="ceiling"
+      >
+        <option value="200">Hssab 1 - 200 DH</option>
+        <option value="5000">Hssab 2 - 5000 DH</option>
+        <option value="20000">Hssab 3 - 20 000 DH</option>
+      </select>
+      <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+                  getActiveForm().controls['ceiling']?.errors?.['required'] && getActiveForm().get('ceiling')?.touched
+                "
+      >
+        Please provide a client ceiling
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="block text-zinc-500 text-sm font-bold mb-2" for="first-name">
+      First Name
+    </label>
+    <input
+      class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="first-name"
+      type="text"
+      placeholder="First Name"
+      formControlName="firstName"
+    />
+    <div
+      class="help is-error text-xs text-red-700 p-2"
+      *ngIf="
+      getActiveForm().controls['firstName']?.errors?.['required'] && getActiveForm().get('firstName')?.touched
+                "
+    >
+      Please Enter a client firstName
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="block text-zinc-500 text-sm font-bold mb-2" for="last-name">
+      Last Name
+    </label>
+    <input
+      class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="last-name"
+      type="text"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+    <div
+      class="help is-error text-xs text-red-700 p-2"
+      *ngIf="
+      getActiveForm().controls['lastName']?.errors?.['required'] && getActiveForm().get('lastName')?.touched
+                "
+    >
+      Please Enter a client lastName
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="block text-zinc-500 text-sm font-bold mb-2" for="phone">
+      Phone
+    </label>
+    <input
+      class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="phone"
+      type="tel"
+      placeholder="Phone"
+      formControlName="phoneNumber"
+    />
+    <div
+      *ngIf=" getActiveForm().controls['phoneNumber'].errors?.['required'] && getActiveForm().get('phoneNumber')?.touched"
+    >
+      <p class="mt-1 text-xs text-red-700 px-3">
+        You forget to type a client phone number
+      </p>
+    </div>
+
+    <div *ngIf=" getActiveForm().controls['phoneNumber'].errors?.['pattern']">
+      <p class="text-xs text-red-700 px-3">This is not a phone number</p>
+    </div>
+  </div>
+  <div class="mb-6">
+    <label class="block text-zinc-500 text-sm font-bold mb-2" for="email">
+      Email
+    </label>
+    <input
+      class="shadow-md h-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="email"
+      type="email"
+      placeholder="Email"
+      formArrayName="email"
+      formControlName="email"
+    />
+
+    <div
+      class="help is-error text-xs text-red-700 p-2"
+      *ngIf="
+      getActiveForm().controls['email']?.errors?.['email'] && getActiveForm().get('email')?.touched
+                "
+    >
+      Please enter a valid email address
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <p
+      class="p-5 rounded-lg font-semibold text-lg"
+      [ngStyle]="{ color: isClientCreated ? 'green' : 'red' }"
+    >
+      {{ wsResponse }}
+    </p>
+  </div>
+
+  <div class="flex justify-end">
+    <button
+      class="bg-orange-400 mr-4 shadow-md hover:bg-orange-300 p-2 px-4 rounded-lg"
+      type="submit"
+      [disabled]="!getActiveForm().valid"
+    >
+      Submit
+    </button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

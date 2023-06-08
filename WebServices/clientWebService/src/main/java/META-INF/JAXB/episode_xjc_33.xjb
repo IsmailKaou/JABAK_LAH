@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par Eclipse Implementation of JAXB, v3.0.0 
+Voir https://eclipse-ee4j.github.io/jaxb-ri 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2023.06.07 à 07:32:32 PM WEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/agentservice">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:createAgentRequest">
+      <class ref="com.example.clientwebservice.CreateAgentRequest"/>
+    </bindings>
+    <bindings scd="~tns:agentDetails">
+      <class ref="com.example.clientwebservice.AgentDetails"/>
+    </bindings>
+    <bindings scd="tns:createAgentResponse">
+      <class ref="com.example.clientwebservice.CreateAgentResponse"/>
+    </bindings>
+    <bindings scd="tns:getAgentsRequest">
+      <class ref="com.example.clientwebservice.GetAgentsRequest"/>
+    </bindings>
+    <bindings scd="tns:getAgentsResponse">
+      <class ref="com.example.clientwebservice.GetAgentsResponse"/>
+    </bindings>
+    <bindings scd="~tns:agentInfo">
+      <class ref="com.example.clientwebservice.AgentInfo"/>
+    </bindings>
+    <bindings scd="tns:updateAgentRequest">
+      <class ref="com.example.clientwebservice.UpdateAgentRequest"/>
+    </bindings>
+    <bindings scd="tns:updateAgentResponse">
+      <class ref="com.example.clientwebservice.UpdateAgentResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteAgentRequest">
+      <class ref="com.example.clientwebservice.DeleteAgentRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteAgentResponse">
+      <class ref="com.example.clientwebservice.DeleteAgentResponse"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/clientservice">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:createClientRequest">
+      <class ref="com.example.clientwebservice.CreateClientRequest"/>
+    </bindings>
+    <bindings scd="~tns:clientDetails">
+      <class ref="com.example.clientwebservice.ClientDetails"/>
+    </bindings>
+    <bindings scd="tns:createClientResponse">
+      <class ref="com.example.clientwebservice.CreateClientResponse"/>
+    </bindings>
+    <bindings scd="tns:updateClientRequest">
+      <class ref="com.example.clientwebservice.UpdateClientRequest"/>
+    </bindings>
+    <bindings scd="tns:updateClientResponse">
+      <class ref="com.example.clientwebservice.UpdateClientResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteClientRequest">
+      <class ref="com.example.clientwebservice.DeleteClientRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteClientResponse">
+      <class ref="com.example.clientwebservice.DeleteClientResponse"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/clientlist">
+    <schemaBindings map="false">
+      <package name="com.example.clientwebservice"/>
+    </schemaBindings>
+    <bindings scd="tns:getClientsRequest">
+      <class ref="com.example.clientwebservice.GetClientsRequest"/>
+    </bindings>
+    <bindings scd="tns:getClientsResponse">
+      <class ref="com.example.clientwebservice.GetClientsResponse"/>
+    </bindings>
+    <bindings scd="~tns:ClientInfo">
+      <class ref="com.example.clientwebservice.model.ClientInfo"/>
+    </bindings>
+  </bindings>
+</bindings>
+

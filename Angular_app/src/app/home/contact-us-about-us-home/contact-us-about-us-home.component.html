@@ -1,0 +1,123 @@
+<div class="h-[70vh] md:h-screen font-popins pt-[60px]">
+  <section
+    class="w-full h-full bg-cream flex flex-row justify-center md:items-center p-10 md:p-0"
+    id="about"
+  >
+    <div
+      class="bg-white w-[100vw] h-9 md:w-4/5 md:h-[90%] shadow-md rounded-[40px] flex flex-col md:flex-row items-center justify-between p-10 gap-3 md:gap-36 relative"
+    >
+      <div class="absolute w-[200px] top-2 md:top-7">
+        <img src="../../../assets/Home/logo-01.png" alt="" />
+      </div>
+      <div
+        class="w-[100%] md:w-1/2 flex flex-col justify-center items-center gap-5 md:gap-10 mt-20 md:mt-0"
+      >
+        <h1 class="font-bold text-3xl">About Us</h1>
+        <p class="text-center text-sm md:text-lg">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem minima
+          aliquid, ipsam quidem exercitationem quod sit eaque esse vel eos dicta
+          necessitatibus explicabo id, quisquam corrupti magni mollitia eius.
+          Minus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Explicabo assumenda eligendi tenetur sed quibusdam non suscipit, rerum
+          velit soluta quae?
+        </p>
+        <div class="w-[20px]">
+          <a href="https://www.linkedin.com/">
+            <fa-icon [icon]="faCoffee"></fa-icon>
+          </a>
+        </div>
+
+        <p class="text-center font-popins text-[#C7C6C2] text-xl">
+          Copyright @Atlas 2023 | Privacy Policy
+        </p>
+      </div>
+
+      <div
+        class="w-[300px] md:w-full max-w-sm p-4 bg-white rounded-lg shadow-2xl sm:p-6 md:p-8"
+      >
+        <h1 class="text-gray-900 text-center mt-5 mb-3 font-bold text-3xl">
+          Contact Us
+        </h1>
+        <p class="text-xs text-[#C7C6C2] text-center px-7 py-5">
+          Hey , Enter your details to Contact us for Something
+        </p>
+        <form
+          [formGroup]="contactForm"
+          class="space-y-6"
+          (ngSubmit)="onSubmit(contactForm.value)"
+        >
+          <div>
+            <input
+              class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
+              placeholder="Enter your Name"
+              type="text"
+              name="name"
+              formControlName="name"
+            />
+            <div
+              class="help is-error text-xs text-red p-2"
+              *ngIf="
+                  contactForm.controls['name']?.errors?.['required'] && contactForm.get('name')?.touched
+                "
+            >
+              Your Name is required
+            </div>
+          </div>
+          <div>
+            <input
+              class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
+              placeholder="Enter your Email"
+              name="email"
+              formControlName="email"
+            />
+            <div
+              class="help is-error text-xs text-red p-2"
+              *ngIf="
+                  contactForm.controls['email']?.errors?.['required'] && contactForm.get('email')?.touched
+                "
+            >
+              Your email is required
+            </div>
+            <div
+              class="help is-error text-xs text-red p-2"
+              *ngIf="
+                  contactForm.controls['email']?.errors?.['email'] && contactForm.get('email')?.touched
+                "
+            >
+              Please enter a valid email address
+            </div>
+          </div>
+
+          <div>
+            <textarea
+              class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
+              placeholder="Type your Message, Question, Feedback etc..."
+              type="text"
+              rows="5"
+              formControlName="body"
+            ></textarea>
+            <div
+              class="help is-error text-xs text-red p-2"
+              *ngIf="
+                  contactForm.controls['body']?.errors?.['required'] && contactForm.get('body')?.touched
+                "
+            >
+              Please type a message to send!
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <button
+              [disabled]="!contactForm.valid"
+              type="submit"
+              class="w-full mt-4 text-[#0E0E10] disabled:bg-[#bdffd2] bg-[#52E782] hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="bg-transparent text-transparent md:hidden">..</div>
+    </div>
+  </section>
+</div>

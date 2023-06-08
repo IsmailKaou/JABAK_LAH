@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/agentservice"
+           xmlns:tns="http://example.com/agentservice"
+           elementFormDefault="qualified">
+
+    <xs:element name="createAgentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="agentDetails" type="tns:agentDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="createAgentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isCreated" type="xs:boolean" />
+                <xs:element name="errorMessage" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAgentsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- no input parameters needed -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAgentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="allAgents" type="tns:agentInfo" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateAgentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="agentInfo" type="tns:agentInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateAgentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isUpdated" type="xs:boolean" />
+                <xs:element name="errorMessage" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteAgentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteAgentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isDeleted" type="xs:boolean" />
+                <xs:element name="errorMessage" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="agentInfo">
+        <xs:sequence>
+            <xs:element name="agentId" type="xs:int"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="cin" type="xs:string"/>
+            <xs:element name="addresse" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="immatriculation" type="xs:string"/>
+            <xs:element name="license" type="xs:string"/>
+            <xs:element name="cinPicture" type="xs:string"/>
+            <xs:element name="birthday" type="xs:string"/>
+
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="agentDetails">
+        <xs:sequence>
+            <xs:element name="agentId" type="xs:int"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="cin" type="xs:string"/>
+            <xs:element name="addresse" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="immatriculation" type="xs:string"/>
+            <xs:element name="license" type="xs:string"/>
+            <xs:element name="cinPicture" type="xs:string"/>
+            <xs:element name="birthday" type="xs:date"/>
+
+
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

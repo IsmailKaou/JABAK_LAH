@@ -1,0 +1,181 @@
+<form [formGroup]="getActiveForm()" 
+(ngSubmit)="onSubmit(getActiveForm().value)" 
+class="bg-white shadow-md rounded px-8 pt-6 pb-8 overflow-y-scroll">
+    <div class="grid grid-cols-2 xsm:grid-cols-1 gap-6 mb-4">
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+First Name        </label>
+        <input formControlName="firstName" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="First Name">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['firstName']?.errors?.['required'] && getActiveForm().get('firstName')?.touched
+                "
+      >
+        Please enter the agent's first Name
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2">
+            Last Name         </label>
+        <input formControlName="lastName" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="Last Name">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['lastName']?.errors?.['required'] && getActiveForm().get('lastName')?.touched
+                "
+      >
+        Please enter the agent's last Name
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+          CIN
+        </label>
+        <!-- <input formControlName="cinPicture" type="file"  (change)="onSelectFile($event)" class="block w-full text-sm text-slate-500
+        file:mr-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+      "/>      -->
+
+      <input type="file"  formControlName="cinPicture"/>
+      <div
+      class="help is-error text-xs text-red-700 p-2"
+      *ngIf="
+      getActiveForm().controls['cinPicture']?.errors?.['required'] && getActiveForm().get('cinPicture')?.touched
+              "
+    >
+      Please provide cin file
+    </div>
+    </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" >
+          N CIN
+        </label>
+        <input formControlName="cin" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder=" N CIN">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['cin']?.errors?.['required'] && getActiveForm().get('cin')?.touched
+                "
+      >
+        Please enter the agent's N°cin
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2">
+Birthday        </label>
+        <input formControlName="birthday" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="date" placeholder="Birthday">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['birthday']?.errors?.['required'] && getActiveForm().get('birthday')?.touched
+                "
+      >
+        Please enter the agent's birthday
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+Home address        </label>
+        <input formControlName="addresse"
+         class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" 
+         type="text" 
+         placeholder="Home address">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['addresse']?.errors?.['required'] && getActiveForm().get('addresse')?.touched
+                "
+      >
+        Please enter the agent's addresse
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field5">
+Email        </label>
+        <input formControlName="email" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="email" placeholder="Email">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['email']?.errors?.['required'] && getActiveForm().get('email')?.touched
+                "
+      >
+        Please enter the agent's email
+      </div>
+      <div *ngIf=" getActiveForm().controls['email'].errors?.['email']">
+        <p class="text-xs text-red-700 px-3">This is not an email</p>
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+Confirm email        </label>
+        <input formControlName="confirmationEmail" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="email" placeholder="Confirm email">
+        <div *ngIf=" getActiveForm().controls['confirmationEmail'].errors?.['email']">
+          <p class="text-xs text-red-700 px-3">This is not an email</p>
+        </div>
+      </div>
+   
+
+    <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field5">
+Phone number        </label>
+        <input formControlName="phone" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="tel" placeholder="Phone number">
+        <div
+        *ngIf=" getActiveForm().controls['phone'].errors?.['required'] && getActiveForm().get('phone')?.touched"
+      >
+        <p class="mt-1 text-xs text-red-700 px-3">
+          Please enter the agent's phone number
+        </p>
+      </div>
+  
+      <div *ngIf=" getActiveForm().controls['phone'].errors?.['pattern']">
+        <p class="text-xs text-red-700 px-3">This is not a phone number</p>
+      </div>
+      </div>
+
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+N immatriculation        </label>
+        <input formControlName="immatriculation" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Registration number in the commercial register">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['immatriculation']?.errors?.['required'] && getActiveForm().get('immatriculation')?.touched
+                "
+      >
+        Please enter the agent's immatriculation
+      </div>
+      </div>
+      <div class="col-span-1">
+        <label class="block text-zinc-500 text-sm font-bold mb-2" for="field6">
+            N license
+        </label>
+        <input formControlName="license" class="shadow appearance-none h-8 border rounded w-full py-2 px-3 text-zinc-500 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Liscence number">
+        <div
+        class="help is-error text-xs text-red-700 p-2"
+        *ngIf="
+        getActiveForm().controls['license']?.errors?.['required'] && getActiveForm().get('license')?.touched
+                "
+      >
+        Please enter the agent's license
+      </div>
+      </div>
+
+    </div>
+    
+    <div class="flex items-center justify-center">
+      <p
+        class="p-5 rounded-lg font-semibold text-lg"
+        [ngStyle]="{ color: isAgentCreated ? 'green' : 'red' }"
+      >
+        {{ wsResponse }}
+      </p>
+    </div>
+  
+  <div class="flex justify-end">
+    
+    <button  class="bg-orange-400 mr-4 shadow-md hover:bg-orange-300 p-2 px-4 rounded-lg" type="submit" [disabled]="getActiveForm().invalid" >Submit</button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

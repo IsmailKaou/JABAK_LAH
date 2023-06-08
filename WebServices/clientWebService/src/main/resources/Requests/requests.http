@@ -1,0 +1,78 @@
+### Create a client
+
+POST http://localhost:2001/ws
+Content-Type: text/xml; charset=utf-8
+SoapAction: http://localhost:2001/createClient
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <createClientRequest xmlns="http://example.com/clientservice">
+            <clientDetails>
+                <firstName>Ismail</firstName>
+                <lastName>Ismail</lastName>
+                <phoneNumber>0601020304</phoneNumber>
+                <ceiling>2000</ceiling>
+                <emailAddress>ismailkaou12@gmail.com</emailAddress>
+            </clientDetails>
+        </createClientRequest>
+    </Body>
+</Envelope>
+
+
+
+
+### Login
+
+POST http://localhost:2001/api/v1/auth/authenticate
+Content-Type: application/json
+
+{
+  "phoneNumber": "0601020304",
+  "password": "GUda7TGsm7"
+
+}
+
+### Register Agent
+POST http://localhost:2001/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email":"jtr@gmail.com",
+  "password":"12345"
+}
+
+
+### Agent Login
+POST http://localhost:2001/api/v1/auth/authenticate/agent
+Content-Type: application/json
+
+{
+  "email":"nizar.bouhsaine@gmail.com",
+  "password":"0GlAZbn0Tb"
+}
+
+### Logout
+
+POST http://localhost:2001/api/v1/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwNjA1ODA5NjU2IiwiaWF0IjoxNjg0MDYzNTAwLCJleHAiOjE2ODQwNjQ0MDB9.hozTNh-NxZVfz3rVLM2Dpl-VcK4z8jlLvVUKb0KnzXM
+
+
+
+### Test secured link
+
+GET http://localhost:2001/api/v1/client
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwNjA1ODA5NjU2IiwiaWF0IjoxNjgzOTkzODg5LCJleHAiOjE2ODQwODAyODl9.ZC6I6MtwLk_wunQpdh58_JtN2CulcnBb6lAnl6b_vFM
+
+
+
+
+### Verify User
+POST http://localhost:2001/api/v1/verify
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWNrLnNwYXJyb3dAZ21haWwuY29tIiwiaWF0IjoxNjg0MjY1NDU1LCJleHAiOjE2ODQyNjYzNTV9.PwesNyoRRA5-mDeIJiY9sG4PBN6DnL_Q2zn_Hu78wFc
+
+{
+  "newPassword" : "IsmailKaou"
+}
+
+

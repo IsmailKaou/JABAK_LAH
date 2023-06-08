@@ -1,0 +1,14 @@
+<div id="popup-modal" tabindex="-1" class=" overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative w-full max-w-md max-h-full">
+          <div class="relative bg-white rounded-lg ">
+
+              <div class="p-6 text-center">
+                  <h3 class="mb-5 text-lg font-normal text-gray-800">{{message}}</h3>
+                  <button data-modal-hide="popup-modal" (click)="onClose()" type="button" class="text-black bg-shiny-green  focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Ok, got it !               
+                        </button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
