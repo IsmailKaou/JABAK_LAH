@@ -17,13 +17,18 @@ export class GetClientsService implements OnInit {
                       </Envelope>`;
 
     const headers = {
-      SOAPAction: '/apis/clientlist/getClients',
+      SOAPAction:
+        'https://jabaklah-production.up.railway.app/clientlist/getClients',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
-    return this.http.post('/apis/ws', request, {
-      headers: headers,
-      responseType: 'text',
-    });
+    return this.http.post(
+      'https://jabaklah-production.up.railway.app/ws',
+      request,
+      {
+        headers: headers,
+        responseType: 'text',
+      }
+    );
   }
 }

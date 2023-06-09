@@ -36,12 +36,12 @@
 //       </soapenv:Envelope>`;
 
 //       const headers = {
-//         SOAPAction: '/apis/GetImpayes',
+//         SOAPAction: 'https://jabaklah-production.up.railway.app/GetImpayes',
 //         'Content-Type': 'text/xml;charset=UTF-8',
 //       };
 
 //   this.http
-//   .post('/apis/ws', request, {
+//   .post('https://jabaklah-production.up.railway.app/ws', request, {
 //     headers: headers,
 //     responseType: 'text',
 //   })  .subscribe((response) => {
@@ -88,12 +88,12 @@
 //               </soapenv:Envelope>`;
 
 //               const headers = {
-//                 SOAPAction: '/apis/GetImpayes',
+//                 SOAPAction: 'https://jabaklah-production.up.railway.app/GetImpayes',
 //                 'Content-Type': 'text/xml;charset=UTF-8',
 //               };
 
 //           this.http
-//           .post('/apis/ws', request, {
+//           .post('https://jabaklah-production.up.railway.app/ws', request, {
 //             headers: headers,
 //             responseType: 'text',
 //           })  .subscribe((response) => {
@@ -164,12 +164,12 @@ export class ImpayesComponent {
       </soapenv:Envelope>`;
 
     const headers = {
-      SOAPAction: '/apis/GetImpayes',
+      SOAPAction: 'https://jabaklah-production.up.railway.app/GetImpayes',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/apis/ws', request, {
+      .post('https://jabaklah-production.up.railway.app/ws', request, {
         headers: headers,
         responseType: 'text',
       })
@@ -231,12 +231,12 @@ export class ImpayesComponent {
               </soapenv:Envelope>`;
 
       const headers = {
-        SOAPAction: '/apis/GetImpayes',
+        SOAPAction: 'https://jabaklah-production.up.railway.app/GetImpayes',
         'Content-Type': 'text/xml;charset=UTF-8',
       };
 
       this.http
-        .post('/apis/ws', request, {
+        .post('https://jabaklah-production.up.railway.app/ws', request, {
           headers: headers,
           responseType: 'text',
         })

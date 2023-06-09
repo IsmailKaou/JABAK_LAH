@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VerificationResponse {
     private String msg;
+    private String user;
 }

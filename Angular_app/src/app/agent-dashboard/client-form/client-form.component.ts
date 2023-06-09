@@ -126,12 +126,12 @@ export class ClientFormComponent implements OnInit {
       </Body>
   </Envelope>`;
       const updateheaders = {
-        SOAPAction: '/apis/updateClient',
+        SOAPAction: 'https://jabaklah-production.up.railway.app/updateClient',
         'Content-Type': 'text/xml;charset=UTF-8',
       };
 
       this.http
-        .post('/apis/ws', updateRequest, {
+        .post('https://jabaklah-production.up.railway.app/ws', updateRequest, {
           headers: updateheaders,
           responseType: 'text',
         })
@@ -180,12 +180,12 @@ export class ClientFormComponent implements OnInit {
       </Envelope>`;
 
       const headers = {
-        SOAPAction: '/apis/createClient',
+        SOAPAction: 'https://jabaklah-production.up.railway.app/createClient',
         'Content-Type': 'text/xml;charset=UTF-8',
       };
 
       this.http
-        .post('/apis/ws', request, {
+        .post('https://jabaklah-production.up.railway.app/ws', request, {
           headers: headers,
           responseType: 'text',
         })

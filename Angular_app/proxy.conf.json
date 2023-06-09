@@ -1,9 +1,9 @@
 {
-  "/apis": {
-    "target": "https://jabaklah-production.up.railway.app/",
+  "https://jabaklah-production.up.railway.app": {
+    "target": "https://jabaklah-production.up.railway.app",
     "secure": false,
     "pathRewrite": {
-      "^/apis": ""
+      "^https://jabaklah-production.up.railway.app": ""
     }
   },
   "logLevel": "debug"

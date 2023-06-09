@@ -113,12 +113,12 @@ export class ElementsComponent {
     // const request='https://localhost:8081/getCreances';
 
     const headers = {
-      SOAPAction: '/apis/ListeCreanciers',
+      SOAPAction: 'https://jabaklah-production.up.railway.app/ListeCreanciers',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/apis/ws', request, {
+      .post('https://jabaklah-production.up.railway.app/ws', request, {
         headers: headers,
         responseType: 'text',
       })

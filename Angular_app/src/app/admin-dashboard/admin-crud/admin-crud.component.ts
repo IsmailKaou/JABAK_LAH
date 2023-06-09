@@ -145,12 +145,12 @@ export class AdminCrudComponent implements OnInit {
 </Envelope>`;
 
     const headers = {
-      SOAPAction: '/apis/agents/getAgents',
+      SOAPAction: 'https://jabaklah-production.up.railway.app/agents/getAgents',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/apis/ws', request, {
+      .post('https://jabaklah-production.up.railway.app/ws', request, {
         headers: headers,
         responseType: 'text',
       })

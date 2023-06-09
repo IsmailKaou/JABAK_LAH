@@ -63,7 +63,7 @@ export class AuthService {
   }
 
   logout() {
-    const url = '/apis/api/v1/auth/logout';
+    const url = 'https://jabaklah-production.up.railway.app/api/v1/auth/logout';
     const token = JSON.parse(localStorage.getItem('clientData')).access_token;
     console.log(token);
     const body = {};

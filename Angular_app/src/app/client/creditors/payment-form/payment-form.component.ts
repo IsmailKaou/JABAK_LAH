@@ -83,12 +83,12 @@ export class PaymentFormComponent {
     </soapenv:Envelope>`;
 
     const headers = {
-      SOAPAction: '/apis/GetForms',
+      SOAPAction: 'https://jabaklah-production.up.railway.app/GetForms',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/apis/ws', request, {
+      .post('https://jabaklah-production.up.railway.app/ws', request, {
         headers: headers,
         responseType: 'text',
       })
@@ -240,12 +240,12 @@ export class PaymentFormComponent {
         </soapenv:Envelope>`;
 
     let headers = {
-      SOAPAction: '/apis/createClient',
+      SOAPAction: 'https://jabaklah-production.up.railway.app/createClient',
       'Content-Type': 'text/xml;charset=UTF-8',
     };
 
     this.http
-      .post('/apis/ws', request, {
+      .post('https://jabaklah-production.up.railway.app/ws', request, {
         headers: headers,
         responseType: 'text',
       })

@@ -46,7 +46,8 @@ export class AdminLoginFormComponent {
         email: login,
         password: password,
       };
-      const url = '/apis/api/v1/auth/authenticate/admin';
+      const url =
+        'https://jabaklah-production.up.railway.app/api/v1/auth/authenticate/admin';
       this.adminAuthService.authenticate(url, body, headers).subscribe(
         (response) => {
           console.log(response);

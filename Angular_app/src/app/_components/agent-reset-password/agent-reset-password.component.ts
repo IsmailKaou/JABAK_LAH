@@ -55,7 +55,7 @@ export class AgentResetPasswordComponent implements OnInit {
       console.log(FormData.newPassword);
 
       const token = this.authService.token;
-      const url = '/apis/api/v1/verify';
+      const url = 'https://jabaklah-production.up.railway.app/api/v1/verify';
       this.resetPasswordService
         .resetPassword(FormData.newPassword, token, url)
         .subscribe(

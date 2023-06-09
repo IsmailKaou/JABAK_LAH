@@ -18,10 +18,12 @@ public class VerificationService {
     public VerificationResponse verify(VerificationRequest request, String authHeader) {
         final String jwt;
         final String userLogin;
+        String user="";
         jwt =authHeader.substring(7);
         userLogin=jwtService.extractUsername(jwt);
         if (userLogin.contains("@"))
         {
+            user="agent";
             var agent = agentRepository.findAgentByEmail(userLogin).orElseThrow();
             agent.setRole(Role.VERIFIED_USER);
             agent.setPassword(passwordEncoder.encode(request.getNewPassword()));
@@ -29,12 +31,13 @@ public class VerificationService {
 
         }
         else {
+            user="client";
             var client = repository.findByPhoneNumber(userLogin).orElseThrow();
             client.setRole(Role.VERIFIED_USER);
             client.setPassword(passwordEncoder.encode(request.getNewPassword()));
             repository.save(client);
         }
 
-        return VerificationResponse.builder().msg("Account has been verified").build();
+        return VerificationResponse.builder().msg("Account has been verified").user(user).build();
     }
 }

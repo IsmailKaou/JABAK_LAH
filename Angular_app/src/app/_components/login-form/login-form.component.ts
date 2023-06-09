@@ -54,7 +54,8 @@ export class LoginFormComponent implements OnInit {
       if (this.loginTitle == 'client') {
         console.log('in client login');
 
-        const url = '/apis/api/v1/auth/authenticate';
+        const url =
+          'https://jabaklah-production.up.railway.app/api/v1/auth/authenticate';
         const body = {
           phoneNumber: login,
           password: password,
@@ -81,7 +82,8 @@ export class LoginFormComponent implements OnInit {
           email: login,
           password: password,
         };
-        const url = '/apis/api/v1/auth/authenticate/agent';
+        const url =
+          'https://jabaklah-production.up.railway.app/api/v1/auth/authenticate/agent';
         this.agentAuthService.authenticate(url, body, headers).subscribe(
           (response) => {
             console.log(response);
