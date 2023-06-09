@@ -85,7 +85,7 @@ public class Client implements UserDetails {
 //    @OneToMany(fetch =  FetchType.EAGER)
 //    private List<Impaye> impayes;
 
-    @ManyToMany(fetch =  FetchType.EAGER)
+    @ManyToMany(fetch =  FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Creance> creances;
 
     public Creance getCreanceById(Integer creanceId) {

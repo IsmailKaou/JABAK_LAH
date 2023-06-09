@@ -53,12 +53,12 @@
       >
         <div *ngIf=" loginForm.controls['login'].errors?.['required']">
           <p class="mt-1 text-xs text-red px-3">
-            You forget to type your phone number
+            You forget to type your email
           </p>
         </div>
 
         <div *ngIf=" loginForm.controls['login'].errors?.['email']">
-          <p class="text-xs text-red px-3">This is not a phone number</p>
+          <p class="text-xs text-red px-3">This is not a email</p>
         </div>
       </div>
       <div>

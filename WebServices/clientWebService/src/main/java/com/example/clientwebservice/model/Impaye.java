@@ -66,11 +66,5 @@ public class Impaye {
     private Client client;
     @ManyToOne
     private Creance creance;
-//    @ManyToOne(fetch =  FetchType.EAGER)
-////    @JoinColumn(name = "creancier_id")
-//    private Creance creance;
-//    @ManyToOne(fetch =  FetchType.EAGER)
-//    @JoinColumn(name = "client_id")
-//    private Client client;
 
 }

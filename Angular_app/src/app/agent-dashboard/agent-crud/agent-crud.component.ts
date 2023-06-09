@@ -9,6 +9,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { MatConfirmDialogComponent } from '../../admin-dashboard/mat-confirm-dialog/mat-confirm-dialog.component';
 import { GetClientsService } from 'src/app/_components/get-clients.service';
 import { SharedServiceService } from '../shared-service.service';
+import { ErrorPopupComponent } from 'src/app/client/creditors/error-popup/error-popup.component';
 
 @Component({
   selector: 'app-agent-crud',
@@ -71,16 +72,23 @@ export class AgentCrudComponent {
     console.log(this.editMode);
   }
   //Delete client dialog
-  openDeleteDialog(clientId: string): void {
-    console.log(clientId);
+  // openDeleteDialog(clientId: string): void {
+  //   console.log(clientId);
 
+  //   // this.dialogService.openConfirmDialog();
+  //   this.dialogRef.open(MatConfirmDialogComponent, {
+  //     width: '390px',
+  //     data: {
+  //       element: 'client',
+  //       id: clientId,
+  //     },
+  //   });
+  // }
+  openDeleteDialog(): void {
     // this.dialogService.openConfirmDialog();
-    this.dialogRef.open(MatConfirmDialogComponent, {
+    ErrorPopupComponent.message = 'Cannot delete : client has impaid bills';
+    this.dialogRef.open(ErrorPopupComponent, {
       width: '390px',
-      data: {
-        element: 'client',
-        id: clientId,
-      },
     });
   }
 

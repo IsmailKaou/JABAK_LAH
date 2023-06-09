@@ -47,6 +47,7 @@ public class PayeBillsService {
         BankAccount clientAccount=bankRepository.findByPhoneNumber(request.getPhone());
         clientAccount.setBalance(clientAccount.getBalance()-request.getAmount());
         System.out.println("the balance is "+clientAccount.getBalance());
+        System.out.println(request.getImpayesIds());
         impayeRepository.deleteAllById(request.getImpayesIds());
         bankRepository.save(clientAccount) ;
         // Write client information
@@ -58,6 +59,7 @@ public class PayeBillsService {
 //        writeToFile(filePath, "Invoice Numbers: " + request.getImpayesIds());
 //        writeToFile(filePath, "Total Amount: MAD" + request.getAmount());
         payeImpayesResponse.setMessage("the impayes has been successfully deleted");
+        System.out.println("impaye delted");
         return payeImpayesResponse;
     }
     public void writeToFile(String filePath, String data) {

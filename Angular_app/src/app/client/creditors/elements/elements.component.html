@@ -19,12 +19,18 @@
       <div
         class="border shadow-xl border-gray-300 w-[40%] h-[250px] bg-white flex flex-row items-center justify-evenly space-x-1"
         *ngFor="
-        let creancier of creanciers
+          let creancier of creanciers
             | paginate : { itemsPerPage: itemsPerPage, currentPage: page }
+            | FilterByCategorie : selectedCategory
         "
       >
         <div class="">
-          <img src="../../../assets/Home/{{ creancier.image }}" alt="" width="150px" height="150px" />
+          <img
+            src="../../../assets/Home/{{ creancier.image }}"
+            alt=""
+            width="150px"
+            height="150px"
+          />
         </div>
 
         <div class="flex flex-col items-start justify-center w-[50%]">
@@ -53,7 +59,7 @@
               </svg>
 
               <a
-              (click)="openDialog(creance.formId,creance.id)"             
+                (click)="openDialog(creance.formId, creance.id)"
                 class="underline hover:no-underline hover:cursor-pointer"
               >
                 {{ creance.name }}
@@ -75,6 +81,5 @@
       aria-label="Select page"
     >
     </mat-paginator> -->
- </div>
-</div> 
-
+  </div>
+</div>
