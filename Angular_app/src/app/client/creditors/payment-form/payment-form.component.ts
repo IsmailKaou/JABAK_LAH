@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PaymentFormComponent {
   form: FormGroup;
-  formControls :FormControl;
+ // formControls :FormControl;
   
  // private dialogErrorRef: MatDialogRef<ErrorPopupComponent>;
 
@@ -100,15 +100,15 @@ this.http
             validators.push(Validators.email);
             console.log("that is true ")
           }
-          if(type==='tel'){
-            validators.push(Validators.required,Validators.pattern('^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$'));
+          if(name==='client_phone'){
+            validators.push(Validators.required,Validators.pattern('^[0-9]{10}$'));
           }
           if(name==='client_name'){
-            validators.push(Validators.required, Validators.minLength(4),Validators.pattern('[a-zA-Z ]*'));
+            validators.push(Validators.required, Validators.minLength(4),Validators.pattern('^[a-zA-Z]+$'));
           }
           
           this.form.addControl(name, this.formBuilder.control('', validators));
-          this.form.addControl('client_email', this.formBuilder.control('', [Validators.email]));
+          this.form.addControl('client_email', this.formBuilder.control('', [Validators.email,Validators.required]));
 
           const field :Field=new Field(id,type,name);
           this.fields.push(field)
@@ -139,7 +139,28 @@ this.http
     // this.validate();
     let phone=this.form.get('client_phone');
     console.log("this is the value "+phone.value)
-    this.checkClient(phone.value,PaymentFormComponent.creanceId)
+   // this.checkClient(phone.value,PaymentFormComponent.creanceId)
+    // const isValid = this.fields.every((field) => !this.isFieldInvalid(field.name));
+    // this.updateFieldErrorMessage('client_phone')
+
+    // if (isValid) {
+    //   this.checkClient(phone.value,PaymentFormComponent.creanceId);
+    // }
+    let allFieldsValid = true;
+
+this.fields.forEach((field) => {
+  this.updateFieldErrorMessage(field.name);
+
+  if (this.isFieldInvalid(field.name)) {
+    allFieldsValid = false;
+  }
+});
+
+if (allFieldsValid) {
+  this.checkClient(phone.value,PaymentFormComponent.creanceId);
+}
+  
+
     // this.generateFormControls()
     // let client_phone=(<HTMLInputElement>document.querySelector('input[name=client_phone]')).value
     // console.log(client_phone)
@@ -159,19 +180,30 @@ this.http
       
   isFieldInvalid(fieldName: string): boolean {
     const control = this.form.get(fieldName);
-    return control?.touched && control?.invalid;
+    return  control?.invalid;
   }
 
   updateFieldErrorMessage(fieldName: string) {
     const control = this.form.get(fieldName);
+    console.log("i am being called again")
 
     if (control?.hasError('required')) {
       this.fields.find(field => field.name === fieldName).errorMessage = 'Field is required.';
-    } else if (control?.hasError('email')) {
-      this.fields.find(field => field.name === fieldName).errorMessage = 'Invalid email format.';
-    } else {
-      this.fields.find(field => field.name === fieldName).errorMessage = '';
     }
+     else if (control?.hasError('email')) {
+      this.fields.find(field => field.name === fieldName).errorMessage = 'Invalid email format.';
+    } 
+    else if(control?.hasError('pattern')) { 
+ 
+      console.log("i am in pattern")
+      const value = control.value;
+      console.log(value)
+        this.fields.find((field) => field.name === fieldName).errorMessage = 'Please respect the valid format.';
+     
+  }
+  else{
+  this.fields.find(field => field.name === fieldName).errorMessage = '';}
+
   }
 
   checkClient(clientPhone : string,creanceId:number){
@@ -182,7 +214,7 @@ this.http
             <soapenv:Body>\
                 <ser:clientHasCreanceRequest >\
                 <phone>${clientPhone}</phone>\
-                <creanceId>1</creanceId>\
+                <creanceId>${creanceId}</creanceId>\
                 </ser:clientHasCreanceRequest>\
             </soapenv:Body>\
         </soapenv:Envelope>`;
