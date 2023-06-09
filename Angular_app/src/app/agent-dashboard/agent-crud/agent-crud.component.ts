@@ -8,6 +8,7 @@ import { Inject } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { MatConfirmDialogComponent } from '../../admin-dashboard/mat-confirm-dialog/mat-confirm-dialog.component';
 import { GetClientsService } from 'src/app/_components/get-clients.service';
+import { SharedServiceService } from '../shared-service.service';
 
 @Component({
   selector: 'app-agent-crud',
@@ -22,7 +23,8 @@ export class AgentCrudComponent {
   constructor(
     private dialogRef: MatDialog,
     private http: HttpClient,
-    private getClientsService: GetClientsService
+    private getClientsService: GetClientsService,
+    private sharedService: SharedServiceService
   ) {
     this.addClientForm = new FormGroup({
       ceiling: new FormControl(null, Validators.required),
@@ -114,16 +116,23 @@ export class AgentCrudComponent {
     //   email: client.emailAddress,
     // });
   }
+  searchValue: string;
 
   clients: Client[];
   client: Client;
   clientForm: ClientFormComponent;
+  filterCeiling: string = 'Customers with ceiling';
 
+  handleFilterChange() {}
   setClients(clients: Client[]): void {
     this.clients = clients;
   }
 
   ngOnInit(): void {
+    this.sharedService.searchValue$.subscribe((value) => {
+      this.searchValue = value;
+      // console.log(this.searchValue);
+    });
     this.getClientsService.fetchClient().subscribe((response: any) => {
       const parser = new DOMParser();
       const xmlResponse = parser.parseFromString(response, 'text/xml');

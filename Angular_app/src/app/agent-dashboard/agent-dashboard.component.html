@@ -1,13 +1,15 @@
-<div class="flex h-screen  dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
-    <app-agent-topbar></app-agent-topbar>
-    <div class="flex flex-col flex-1 w-full">
-
-        <main class="h-full overflow-y-auto">
-            <div class="container px-6 mx-auto grid">
-                <app-agent-statistics></app-agent-statistics>
-                <app-agent-crud></app-agent-crud>
-                <app-agent-chart></app-agent-chart>
-            </div>
-        </main>
-    </div>
+<div
+  class="flex h-screen dark:bg-gray-900"
+  :class="{ 'overflow-hidden': isSideMenuOpen }"
+>
+  <app-agent-topbar></app-agent-topbar>
+  <div class="flex flex-col flex-1 w-full">
+    <main class="h-full overflow-y-auto">
+      <div class="container px-6 mx-auto grid">
+        <app-agent-statistics></app-agent-statistics>
+        <app-agent-crud></app-agent-crud>
+        <!-- <app-agent-chart></app-agent-chart> -->
+      </div>
+    </main>
+  </div>
 </div>

@@ -18,6 +18,8 @@
           type="text"
           placeholder="Search for clients"
           aria-label="Search"
+          [(ngModel)]="searchValue"
+          (input)="handleSearch()"
         />
       </div>
     </div>

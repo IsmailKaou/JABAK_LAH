@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private builder: FormBuilder,
-    private agentAuthService:AgentAuthService,
+    private agentAuthService: AgentAuthService
   ) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -48,14 +48,18 @@ export class LoginFormComponent implements OnInit {
       const login = FormData.login;
       const password = FormData.password;
       console.log('your in login handler');
-      const url = '/apis/api/v1/auth/authenticate';
-      const body = {
-        phoneNumber: login,
-        password: password,
-      };
+
       const headers = { 'Content-Type': 'application/json' };
 
       if (this.loginTitle == 'client') {
+        console.log('in client login');
+
+        const url = '/apis/api/v1/auth/authenticate';
+        const body = {
+          phoneNumber: login,
+          password: password,
+        };
+
         this.authService.authenticate(url, body, headers).subscribe(
           (response) => {
             console.log(response);
@@ -72,9 +76,7 @@ export class LoginFormComponent implements OnInit {
             this.error = errorMessage;
           }
         );
-      }
-      else
-      {
+      } else {
         const body = {
           email: login,
           password: password,

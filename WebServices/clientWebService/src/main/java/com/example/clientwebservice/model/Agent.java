@@ -40,7 +40,7 @@ public class Agent implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "agent")
+    @OneToMany(mappedBy = "agent",cascade = CascadeType.ALL)
     private List<AgentToken> agentTokens;
 
 

@@ -24,6 +24,7 @@ public class WebServiceConfig {
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
+
     @Bean(name = "clients")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -33,6 +34,7 @@ public class WebServiceConfig {
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
     }
+
 
     @Bean
     public XsdSchema schema() {
@@ -48,6 +50,7 @@ public class WebServiceConfig {
         wsdl11Definition.setSchema(ClientListSchema);
         return wsdl11Definition;
     }
+
 
     @Bean
     public XsdSchema ClientListSchema() {
@@ -95,6 +98,16 @@ public class WebServiceConfig {
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
     }
+    @Bean(name = "verifyClient")
+    public DefaultWsdl11Definition verifyClientWsdl11Definition(XsdSchema schema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("VerificationResponse");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://example.com/getImpayes");
+        wsdl11Definition.setSchema(schema);
+        return wsdl11Definition;
+    }
+
 
 }
 

@@ -1,4 +1,4 @@
-<div class="fixed inset-0 flex items-center justify-center z-50">
+<!-- <div class="fixed inset-0 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg shadow-lg p-6 w-80">
       <h2 class="text-lg font-bold mb-4">Verification Code</h2>
       <p class="text-green-500 mb-4">A verification code has been sent to your phone number. Please enter the code below:</p>
@@ -6,4 +6,56 @@
       <button type="button" class="bg-green-500 text-white rounded-md px-4 py-2 font-medium">Verify</button>
     </div>
   </div>
-  
+   -->
+
+<div
+  class="fixed"
+  class="overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+  <div class="relative w-full max-w-md max-h-full">
+    <button
+      (click)="onClose()"
+      class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+      <span class="sr-only">Close modal</span>
+    </button>
+    <div class="bg-white rounded-lg shadow-lg p-6 w-80">
+      <h2 class="text-lg font-bold mb-4">Verification Code</h2>
+      <p class="text-green-500 mb-4">
+        A verification code has been sent to your phone number. Please enter the
+        code below:
+      </p>
+      <input
+        type="text"
+        name="code"
+        placeholder="Enter verification code"
+        class="w-full border-green-300 rounded-lg px-3 py-2 mb-4"
+        #code
+      />
+      <button
+        type="button"
+        (click)="verifyClient(code.value)"
+        class="bg-green-500 text-white rounded-lg px-4 py-2 font-medium"
+      >
+        Verify
+      </button>
+      <p *ngIf="userValid == false" class="text-red-500 text-sm m-2">
+        {{ errorMessage }}
+      </p>
+    </div>
+      
+  </div>
+   
+</div>

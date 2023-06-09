@@ -56,16 +56,19 @@ import { CodeVerificationComponent } from './client/creditors/code-verification/
 import { DatePipe } from '@angular/common';
 import { AuthAgentGuard } from './_components/authAgent.guard';
 import { AgentResetPasswordComponent } from './_components/agent-reset-password/agent-reset-password.component';
+import { FilterByCeilingPipe } from './agent-dashboard/filter-by-ceiling.pipe';
+import { FilterByNamePipe } from './agent-dashboard/filter-by-name.pipe';
+import { SharedServiceService } from './agent-dashboard/shared-service.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'clientLogin', component: ClientComponent },
   { path: 'agentLogin', component: AgentComponent },
-  { path: 
-    'agentDashboard', 
+  {
+    path: 'agentDashboard',
     component: AgentDashboardComponent,
-    canActivate :[AuthAgentGuard]
-   },
+    canActivate: [AuthAgentGuard],
+  },
 
   {
     path: 'clientHome',
@@ -86,8 +89,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'agent-reset-password',
-    component:AgentResetPasswordComponent,
+    component: AgentResetPasswordComponent,
     canActivate: [AuthAgentGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
   },
   { path: '**', component: HomeComponent },
 ];
@@ -130,6 +137,8 @@ const appRoutes: Routes = [
     ImpayesComponent,
     ErrorPopupComponent,
     CodeVerificationComponent,
+    FilterByCeilingPipe,
+    FilterByNamePipe,
   ],
   imports: [
     BrowserModule,
@@ -148,7 +157,7 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [EmailService,DatePipe],
+  providers: [EmailService, DatePipe, SharedServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

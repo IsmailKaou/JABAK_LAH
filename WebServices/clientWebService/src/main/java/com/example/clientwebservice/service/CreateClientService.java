@@ -15,6 +15,7 @@ import com.example.clientwebservice.repository.ClientRepository;
 import com.example.clientwebservice.response.GetClientResponse;
 import com.example.clientwebservice.response.PaymentResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +31,13 @@ public class CreateClientService {
     private final ClientRepository clientRepository;
     private final RandomPasswordGenerator randomPasswordGenerator;
     private final SmsService smsService;
+    @Autowired
+    BankRepository bankRepository;
     public CreateClientResponse createClient(CreateClientRequest request){
 
         CreateClientResponse response = new CreateClientResponse();
         ClientDetails clientDetails = request.getClientDetails();
+
 
         if(!clientHasBankAccount(clientDetails.getPhoneNumber())  ){
             response.setIsCreated(false);
@@ -56,7 +60,7 @@ public class CreateClientService {
         client.setActive(false);
         client.setPassword(passwordEncoder.encode(password));
         client.setRole(Role.UNVERIFIED_USER);
-        smsService.sendSMS("Your password : "+password,"212633166669");
+//        smsService.sendSMS("Your password : "+password,"212633166669");
         System.out.printf("Password is "+ password +"\n");
         System.out.printf("Made it here \n");
         clientRepository.save(client);
@@ -152,10 +156,35 @@ public class CreateClientService {
     }
 
 
+//    public PaymentResponse canClientPaye(PaymentRequest paymentRequest){
+//        PaymentResponse canClientPayeResponse=new PaymentResponse();
+//        String phone=paymentRequest.getPhone();
+//        Optional<Client> client=clientRepository.findByPhoneNumber(phone);
+//
+//        if(!client.isPresent()){
+//            canClientPayeResponse.setCanClientPaye(false);
+//            canClientPayeResponse.setMessage("The number phone provided does not correspond to any of our clients.");
+//        } else if (Double.parseDouble(client.get().getCeiling())<paymentRequest.getAmount()) {
+//            canClientPayeResponse.setCanClientPaye(false);
+//            canClientPayeResponse.setMessage("Payment not possible. Ceiling amount is insufficient.");
+//
+//        } else if (client.get().getSolde()<paymentRequest.getAmount()) {
+//            canClientPayeResponse.setCanClientPaye(false);
+//            canClientPayeResponse.setMessage("You do not have enough funds in your account to complete the payment.");
+//        }
+//        else{
+//            canClientPayeResponse.setCanClientPaye(true);
+//            canClientPayeResponse.setMessage("You can make the payment.");
+//        }
+//        return canClientPayeResponse;
+//    }
+
     public PaymentResponse canClientPaye(PaymentRequest paymentRequest){
         PaymentResponse canClientPayeResponse=new PaymentResponse();
         String phone=paymentRequest.getPhone();
         Optional<Client> client=clientRepository.findByPhoneNumber(phone);
+        System.out.println("the amount is "+paymentRequest.getAmount());
+        System.out.println("the balance is "+bankRepository.findByPhoneNumber(paymentRequest.getPhone()).getBalance());
 
         if(!client.isPresent()){
             canClientPayeResponse.setCanClientPaye(false);
@@ -164,7 +193,7 @@ public class CreateClientService {
             canClientPayeResponse.setCanClientPaye(false);
             canClientPayeResponse.setMessage("Payment not possible. Ceiling amount is insufficient.");
 
-        } else if (client.get().getSolde()<paymentRequest.getAmount()) {
+        } else if (bankRepository.findByPhoneNumber(paymentRequest.getPhone()).getBalance()<paymentRequest.getAmount()) {
             canClientPayeResponse.setCanClientPaye(false);
             canClientPayeResponse.setMessage("You do not have enough funds in your account to complete the payment.");
         }
