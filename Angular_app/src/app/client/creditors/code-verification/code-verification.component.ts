@@ -41,7 +41,7 @@ export class CodeVerificationComponent {
         <soapenv:Header/>\
         <soapenv:Body>\
             <ser:verifyPhoneRequest >\
-            <phone>212659522438</phone>\
+            <phone>212633166669</phone>\
             </ser:verifyPhoneRequest>\
         </soapenv:Body>\
     </soapenv:Envelope>`;
@@ -95,7 +95,7 @@ export class CodeVerificationComponent {
       <soapenv:Header/>\
       <soapenv:Body>\
         <ser:payeImpayesRequest >\
-        <phone>0659522438</phone>\
+        <phone>212633166669</phone>\
        <amount>${CodeVerificationComponent.amount}</amount>\
           ${impayesString}\
         </ser:payeImpayesRequest>\
