@@ -42,7 +42,8 @@ INSERT INTO `form_fields` (`form_id`, `fields_id`) VALUES
 (3, 1),
 (1, 2),
 (2, 3),
-(4, 3);
+(4, 3),
+(4,1);
 
 --
 -- Index pour les tables déchargées

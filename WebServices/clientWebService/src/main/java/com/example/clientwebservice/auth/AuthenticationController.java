@@ -31,6 +31,14 @@ public class AuthenticationController {
     ){
         return ResponseEntity.ok(service.authenticateAgent(request));
     }
+    @PostMapping("/authenticate/admin")
+    public ResponseEntity<AdminAuthenticationResponse> authenticate(
+            @RequestBody AdminAuthenticationRequest request
+    ){
+        System.out.println("Im here in endpoint");
+//        System.out.println(request.getEmail());
+        return ResponseEntity.ok(service.authenticateAdmin(request));
+    }
     @PostMapping("/register")
     public ResponseEntity<AgentAuthenticationResponse> register(
             @RequestBody AgentAuthenticationRequest request

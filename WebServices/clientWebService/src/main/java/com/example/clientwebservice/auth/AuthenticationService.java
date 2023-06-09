@@ -1,16 +1,10 @@
 package com.example.clientwebservice.auth;
 
 import com.example.clientwebservice.config.JwtService;
-import com.example.clientwebservice.model.Agent;
-import com.example.clientwebservice.repository.AgentRepository;
-import com.example.clientwebservice.model.AgentToken;
-import com.example.clientwebservice.repository.AgentTokenRepository;
-import com.example.clientwebservice.model.TokenType;
+import com.example.clientwebservice.model.*;
+import com.example.clientwebservice.repository.*;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-import com.example.clientwebservice.model.Client;
-import com.example.clientwebservice.model.Token;
-import com.example.clientwebservice.repository.ClientRepository;
-import com.example.clientwebservice.repository.TokenRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,9 +19,11 @@ import java.io.IOException;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+    private final AdminRepository adminCrud;
     private final AgentRepository agentCrud;
     private final ClientRepository repository;
     private final AgentTokenRepository agentTokenRepository;
+    private final AdminTokenRepository adminTokenRepository;
     private final TokenRepository tokenRepository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -35,6 +31,47 @@ public class AuthenticationService {
     private long jwtExpiration;
     private final PasswordEncoder passwordEncoder;
 
+    @PostConstruct
+    public void initAdmin(){
+        var user = adminCrud.findById(1);
+        if(!user.isPresent()){
+            Admin admin=new Admin();
+            admin.setEmail("admin@admin.com");
+            admin.setFirstName("admin");
+            admin.setRole(Role.ADMIN);
+            admin.setPassword(passwordEncoder.encode("admin"));
+            adminCrud.save(admin);
+        }
+
+    }
+
+    public AdminAuthenticationResponse authenticateAdmin(AdminAuthenticationRequest request) {
+        System.out.println(request.getEmail());
+        System.out.println(request.getPassword());
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        "admin@admin.com",
+                        "admin"
+                )
+        );
+
+        var admin = adminCrud.findAdminByEmail(request.getEmail()).orElseThrow();
+        var jwtToken = jwtService.generateToken(admin);
+        var refreshToken = jwtService.generateRefreshToken(admin);
+        revokeAllAdminTokens(admin);
+        saveAdminToken(admin,jwtToken);
+        return AdminAuthenticationResponse.builder()
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .id(admin.getId())
+                .firstName(admin.getFirstName())
+                .lastName(admin.getLastName())
+                .email(admin.getEmail())
+                .status(admin.getRole())
+                .expirationIn(jwtExpiration)
+                .isTokenValid(true)
+                .build();
+    }
     public AgentAuthenticationResponse authenticateAgent(AgentAuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -82,6 +119,19 @@ public class AuthenticationService {
                 .isTokenValid(true)
                 .build();
     }
+    private void revokeAllAdminTokens(Admin admin)
+    {
+        var validAdminTokens = adminTokenRepository.findAllValidTokensByAdmin(admin.getId());
+        if(validAdminTokens.isEmpty())
+        {
+            return;
+        }
+        validAdminTokens.forEach(t->{
+            t.setRevoked(true);
+            t.setExpired(true);
+        });
+        adminTokenRepository.saveAll(validAdminTokens);
+    }
 
     private void revokeAllAgentTokens(Agent agent)
     {
@@ -104,6 +154,16 @@ public class AuthenticationService {
             t.setRevoked(true);
         });
         tokenRepository.saveAll(validUserTokens);
+    }
+    private void saveAdminToken(Admin admin, String jwtToken) {
+        var token = AdminToken.builder()
+                .admin(admin)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+        adminTokenRepository.save(token);
     }
 
     private void saveAgentToken(Agent agent, String jwtToken) {

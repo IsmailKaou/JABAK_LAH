@@ -59,6 +59,8 @@ import { AgentResetPasswordComponent } from './_components/agent-reset-password/
 import { FilterByCeilingPipe } from './agent-dashboard/filter-by-ceiling.pipe';
 import { FilterByNamePipe } from './agent-dashboard/filter-by-name.pipe';
 import { SharedServiceService } from './agent-dashboard/shared-service.service';
+import { AdminLoginFormComponent } from './_components/admin-login-form/admin-login-form.component';
+import { AuthAdminGuard } from './_components/auth-admin.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -93,8 +95,13 @@ const appRoutes: Routes = [
     canActivate: [AuthAgentGuard],
   },
   {
-    path: 'admin',
+    path: 'adminLogin',
+    component: AdminLoginFormComponent,
+  },
+  {
+    path: 'adminDashboard',
     component: AdminDashboardComponent,
+    canActivate: [AuthAdminGuard],
   },
   { path: '**', component: HomeComponent },
 ];
@@ -139,6 +146,7 @@ const appRoutes: Routes = [
     CodeVerificationComponent,
     FilterByCeilingPipe,
     FilterByNamePipe,
+    AdminLoginFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 package com.example.clientwebservice.config;
 
+import com.example.clientwebservice.repository.AdminRepository;
 import com.example.clientwebservice.repository.AgentRepository;
 import com.example.clientwebservice.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ApplicationConfig {
     private final AgentRepository agentCrud;
     private final ClientRepository repository;
+    private final AdminRepository adminCrud;
 
 //    @Bean
 //    public UserDetailsService userDetailsService()
@@ -37,11 +39,13 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> {
-            if(username.contains("@"))
+            if(username.contains("admin@"))
             {
+                return adminCrud.findAdminByEmail(username).orElseThrow(()-> new UsernameNotFoundException("Agent not found"));
+            } else if (username.contains("@")) {
                 return agentCrud.findAgentByEmail(username).orElseThrow(()-> new UsernameNotFoundException("Agent not found"));
-            }
-            else {
+
+            } else {
                 return repository.findByPhoneNumber(username).orElseThrow(()-> new UsernameNotFoundException("Client not found"));
             }
         };
@@ -69,6 +73,5 @@ public class ApplicationConfig {
     @Bean
     public  PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-
     }
 }

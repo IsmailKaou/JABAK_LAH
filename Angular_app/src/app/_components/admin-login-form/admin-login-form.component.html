@@ -3,7 +3,7 @@
 >
   <div class="w-full max-w-sm p-4 bg-white rounded-lg shadow-2xl sm:p-6 md:p-8">
     <h1 class="text-2xl font-bold text-gray-900 text-center mt-5 mb-3">
-      {{ loginTitle === "client" ? "Client login" : "Agent login" }}
+      {{ "Admin login" }}
     </h1>
     <p class="text-xs text-[#C7C6C2] text-center px-7 py-5">
       Hey , Enter your details to get sign in to your account
@@ -38,14 +38,10 @@
       <div>
         <input
           class="w-full text-sm bg-transparent border border-silver rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-shiny-green"
-          [placeholder]="
-            inputType === 'email'
-              ? 'Enter your email'
-              : 'Enter your phone number'
-          "
+          [placeholder]="'Enter your email'"
           name="login"
           formControlName="login"
-          type="{{ inputType === 'email' ? 'email' : 'text' }}"
+          type="email"
         />
       </div>
       <div
@@ -61,9 +57,7 @@
           </p>
         </div>
 
-        <div
-          *ngIf=" loginForm.controls['login'].errors?.[inputType==='email'?'email':'pattern']"
-        >
+        <div *ngIf=" loginForm.controls['login'].errors?.['email']">
           <p class="text-xs text-red px-3">This is not a phone number</p>
         </div>
       </div>
@@ -85,7 +79,7 @@
         </p>
       </div>
       <div class="mt-5">
-        <!-- <a class="text-xs" href="#">Having trouble ?</a> -->
+        <a class="text-xs" href="#">Having trouble ?</a>
       </div>
 
       <div class="mb-5">

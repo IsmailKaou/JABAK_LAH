@@ -19,6 +19,7 @@ export class AgentCrudComponent {
   addClientForm: FormGroup;
   updateClientForm: FormGroup;
   editMode: boolean = false;
+  searchValue: string;
 
   constructor(
     private dialogRef: MatDialog,
@@ -116,7 +117,6 @@ export class AgentCrudComponent {
     //   email: client.emailAddress,
     // });
   }
-  searchValue: string;
 
   clients: Client[];
   client: Client;
