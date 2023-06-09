@@ -1,6 +1,6 @@
 {
   "/apis": {
-    "target": "http://localhost:2001/",
+    "target": "https://jabaklah-production.up.railway.app/",
     "secure": false,
     "pathRewrite": {
       "^/apis": ""
