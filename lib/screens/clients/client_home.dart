@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:jabaklah_mobile/screens/clients/creditor_form.dart';
 import '../../models/creditor.dart';
 import '../../models/bill.dart';
 import '../../controllers/authController.dart';
@@ -117,6 +118,13 @@ class _ClientProfileViewState extends State<ClientProfileView> with TickerProvid
             leading: const Icon(Icons.home),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ClientProfileView(
+                                jsonUser: widget.jsonUser,
+                              )));
+              
             },
 
             
@@ -148,25 +156,9 @@ class _ClientProfileViewState extends State<ClientProfileView> with TickerProvid
           ),
         centerTitle: true,
         backgroundColor: bgColor,
-        iconTheme:  IconThemeData(color:lightGreen), 
-        bottom:  TabBar(
-            controller: _tabController,
-            labelColor: Colors.black, 
-             indicatorColor: lightGreen,
-          tabs: const [
-            Tab(text: 'List of Creditors'),
-            Tab(text: 'History'),
-          ]
-          ),   
+        iconTheme:  IconThemeData(color:lightGreen),   
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children:  <Widget>[
-           getCreditorsList(),
-      
-          getBillHistory(),
-          ]
-          )
+      body: getCreditorsList(),
 
     );
   }
@@ -211,7 +203,35 @@ class _ClientProfileViewState extends State<ClientProfileView> with TickerProvid
                 elevation: 7,
                 child: InkWell(
                   onTap: (){
-                  },
+                showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: const Center(child: Text("Credit"),),
+                  content: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                        children: creditorList[2*i].creditList!.map(
+                          (credit) => InkWell(
+                            onTap: (){
+                              
+              Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreditForm(
+                                jsonUser: widget.jsonUser,formData:credit.formData!.formFields,creanceId: credit.id,
+                              )));
+              
+
+
+                            },
+                            child:  getCreditTab(credit.name),
+                          )
+                          ).toList()
+                      ),
+                  ));
+                  });},
                   child: Column(
                   children: [
                     Image.asset('assets/images/${creditorList[2*i].image}',height: 100),
@@ -226,6 +246,32 @@ class _ClientProfileViewState extends State<ClientProfileView> with TickerProvid
                 elevation: 7,
                 child: InkWell(
                   onTap: (){
+              showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: const Center(child: Text("Credit"),),
+                  content: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                        children: creditorList[2*i+1].creditList!.map(
+                          (credit) => InkWell(
+                            onTap: (){
+                        Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreditForm(
+                                jsonUser: widget.jsonUser,formData:credit.formData!.formFields
+                              )));
+
+                            },
+                            child:  getCreditTab(credit.name),
+                          )
+                          ).toList()
+                      ),
+                  ));
+                  });
                   },
                   child: Column(
                   children: [
@@ -249,6 +295,33 @@ class _ClientProfileViewState extends State<ClientProfileView> with TickerProvid
                 elevation: 7,
                 child: InkWell(
                   onTap: (){
+              showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: const Center(child: Text("Credit"),),
+                  content: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                        children: creditorList[2*i].creditList!.map(
+                          (credit) => InkWell(
+                            onTap: (){
+                                            Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreditForm(
+                                jsonUser: widget.jsonUser,formData:credit.formData!.formFields
+                              )));
+
+                            },
+                            child:  getCreditTab(credit.name),
+                          )
+                          ).toList()
+                      ),
+                  ));
+                  });
+
                   },
                   child: Column(
                   children: [
@@ -298,6 +371,36 @@ getBillHistory()
       ))
       .toList(),
   );
+}
+
+getCreditTab(name)
+{
+  return Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 7,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            "${name}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                ),
+                          ),
+                        const SizedBox(
+                            height: 15,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
 }
 }
 

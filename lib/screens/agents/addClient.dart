@@ -8,9 +8,13 @@ import 'package:xml/xml.dart' as xml;
 
 import 'package:http/http.dart' as http;
 
+import '../../models/client.dart';
+
 class AddClient extends StatefulWidget {
   final jsonUser;
-  const AddClient({super.key, this.jsonUser});
+  final add;
+  final client;
+  const AddClient({super.key, this.jsonUser, this.add, this.client});
 
   @override
   State<AddClient> createState() => _AddClientState();
@@ -19,8 +23,8 @@ class AddClient extends StatefulWidget {
 class _AddClientState extends State<AddClient> {
   static const String myUrl = Config.url;
   final _formKey = GlobalKey<FormState>();
-  final ceillingController = TextEditingController();
   final firstNameController = TextEditingController();
+  final ceillingController = TextEditingController();
   final lastNameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
@@ -35,7 +39,7 @@ class _AddClientState extends State<AddClient> {
     'Hssab 2 - 5000 DH': 5000,
     'Hssab 3 - 20 000 DH': 20000
   };
-  String? _selectedCeiling;
+  String? _selectedCeiling='Hssab 1 - 200 DH';
 
   String createSoapRequest(String firstname, String lastname,
       String phoneNumber, String ceiling, String emailAddress) {
@@ -51,6 +55,26 @@ class _AddClientState extends State<AddClient> {
                       <emailAddress>$emailAddress</emailAddress>
                   </clientDetails>
               </createClientRequest>
+        </Body>
+    </Envelope>
+    ''';
+  }
+
+  String updateSoapRequest(Client client, String firstname, String lastname,
+      String phoneNumber, String ceiling, String emailAddress) {
+    return '''<?xml version="1.0" encoding="utf-8"?>
+      <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+        <Body>
+            <updateClientRequest xmlns="http://example.com/clientservice">
+          <clientId>${client.id}</clientId>
+              <clientInfo>
+                  <firstName>$firstname</firstName>
+                  <lastName>$lastname</lastName>
+                  <phoneNumber>$phoneNumber</phoneNumber>
+                  <ceiling>${_ceilingOptionsMap[ceiling]}</ceiling>
+                  <emailAddress>$emailAddress</emailAddress>
+              </clientInfo>
+          </updateClientRequest>
         </Body>
     </Envelope>
     ''';
@@ -108,10 +132,88 @@ class _AddClientState extends State<AddClient> {
         message = errorMessage;
       });
     }
+    @override
+    void initState() {
+      super.initState();
+
+      if (!widget.add) {
+        // Set initial values for editing
+        lastNameController.value =
+            TextEditingValue(text: widget.client.lastName);
+        firstNameController.text = widget.client.firstName;
+        phoneController.text = widget.client.phoneNumber;
+        emailController.text = widget.client.emailAddress;
+      }
+    }
+
+    @override
+    void dispose() {
+      lastNameController.dispose();
+      firstNameController.dispose();
+      phoneController.dispose();
+      emailController.dispose();
+      ceillingController.dispose();
+      super.dispose();
+    }
+  }
+
+  Future<void> update(Client client) async {
+    print("likan");
+    final soapRequest = updateSoapRequest(
+        client,
+        firstNameController.text,
+        lastNameController.text,
+        phoneController.text,
+        _selectedCeiling!,
+        emailController.text);
+print(soapRequest);
+    final updateHeaders = {
+      'SOAPAction': '$myUrl/updateClient',
+      'Content-Type': 'text/xml;charset=UTF-8',
+    };
+
+    final response = await http.post(
+      Uri.parse('$myUrl/ws'),
+      headers: updateHeaders,
+      body: soapRequest,
+    );
+
+    final parser = xml.XmlDocument.parse(response.body);
+    final isUpdated =
+        parser.findAllElements('ns2:isUpdated').first.text == 'true';
+
+    if (isUpdated) {
+      print('Client updated successfully');
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AgentCrud(
+                    jsonUser: widget.jsonUser,
+                  )));
+    } else {
+      final errorMessage =
+          parser.findAllElements('ns2:errorMessage').first.text;
+      print('Error updating Client: $errorMessage');
+      setState(() {
+        message = errorMessage;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      lastNameController.value =
+          TextEditingValue(text: widget.add ? "" : widget.client.lastName);
+      firstNameController.value =
+          TextEditingValue(text: widget.add ? "" : widget.client.firstName);
+
+      phoneController.value =
+          TextEditingValue(text: widget.add ? "" : widget.client.phoneNumber);
+      emailController.value = emailController.value =
+          TextEditingValue(text: widget.add ? "" : widget.client.emailAddress);
+    });
+
     return SafeArea(
         child: WillPopScope(
       onWillPop: () async {
@@ -162,7 +264,7 @@ class _AddClientState extends State<AddClient> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25.0),
                           child: DropdownButtonFormField<String>(
-                            value: _selectedCeiling,
+                            value: 'Hssab 1 - 200 DH',
                             items: _ceilingOptions.map((ceiling) {
                               return DropdownMenuItem<String>(
                                 value: ceiling,
@@ -187,9 +289,10 @@ class _AddClientState extends State<AddClient> {
                         ),
                         const SizedBox(height: 25),
                         MyTextField(
-                            controller: firstNameController,
-                            hintText: "FirstName",
-                            obscureText: false),
+                          controller: firstNameController,
+                          hintText: "FirstName",
+                          obscureText: false,
+                        ),
                         const SizedBox(height: 25),
                         MyTextField(
                             controller: lastNameController,
@@ -225,7 +328,14 @@ class _AddClientState extends State<AddClient> {
                                       content: Text('Processing Data'),
                                       backgroundColor: Colors.blue),
                                 );
-                                await sendSoapRequest();
+                                if (widget.add) {
+                                  await sendSoapRequest();
+                                } else {
+                                  print(widget.client.firstName);
+                                  await update(widget.client);
+
+                                  print("update");
+                                }
                               }
                             },
                             child: Container(

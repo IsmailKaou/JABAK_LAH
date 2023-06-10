@@ -377,6 +377,7 @@ class _AgentCrudState extends State<AgentCrud> {
                       MaterialPageRoute(
                           builder: (context) => AddClient(
                                 jsonUser: widget.jsonUser,
+                                add: true,
                               )));
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: lightGreen),
@@ -442,17 +443,25 @@ class _AgentCrudState extends State<AgentCrud> {
                                       FontAwesomeIcons.pencil,
                                       size: 20,
                                     ),
-                                    onPressed: () {},
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(Icons.delete),
                                     onPressed: () {
-                                      clientController.delete(client.id);
-                                      setState(() {
-                                        clientList.remove(client);
-                                      });
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => AddClient(
+                                                  jsonUser: widget.jsonUser,
+                                                  add: false,
+                                                  client: client)));
                                     },
                                   ),
+                                  // IconButton(
+                                  //   icon: const Icon(Icons.delete),
+                                  //   onPressed: () {
+                                  //     clientController.delete(client.id);
+                                  //     setState(() {
+                                  //       clientList.remove(client);
+                                  //     });
+                                  //   },
+                                  // ),
                                 ],
                               )))
                             ],

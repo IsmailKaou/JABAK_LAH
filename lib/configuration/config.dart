@@ -1,3 +1,3 @@
 class Config{
-  static const String url = "http://10.0.2.2:2000";
+  static const String url = "https://jabaklah-production.up.railway.app";
 }
